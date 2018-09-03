@@ -25,7 +25,6 @@ set :deploy_to, "/home/apps/lashou"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-color: :auto, truncate: :auto
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
