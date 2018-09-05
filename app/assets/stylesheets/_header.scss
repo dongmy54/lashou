@@ -1,0 +1,36 @@
+.navbar {
+  min-height: 80px;
+}
+
+.navbar-default {
+    background-color: #a1e8e4;
+    border-color: #E7E7E7;
+}
+
+/* Link */
+.navbar-default .navbar-nav > li > a {
+    color: rgb(63, 56, 100);
+    font-size: 1.1em;
+}
+
+.navbar-brand {
+  font-size: 25px;
+  padding: 0 20px;
+  height: 80px;
+  line-height: 80px;
+}
+
+.navbar-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
+}
