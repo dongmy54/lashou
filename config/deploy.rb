@@ -1,3 +1,4 @@
+sh "ssh-add"
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
@@ -8,7 +9,7 @@ set :repo_url, "git@github.com:dongmy54/lashou.git"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/apps/lashou"
+set :deploy_to, "/home/deploy/lashou"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -33,6 +34,7 @@ append :linked_files, "config/database.yml", "config/secrets.yml"
 # set :local_user, -> { `git config user.name`.chomp }
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
+set :passenger_restart_with_touch, true
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
