@@ -18,5 +18,7 @@
 #  updated_at   :datetime         not null
 #
 
+# 求职者
 class Applicant < ApplicationRecord
+  validates :name, presence: true
 end
