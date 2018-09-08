@@ -42,6 +42,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'annotate', '2.7.4'        # 为model 添加字段注释
 end
 
 group :development do
