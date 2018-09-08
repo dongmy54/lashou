@@ -36,6 +36,7 @@ gem 'haml', '5.0.4'
 gem 'jquery-rails','4.3.3'
 gem 'pg'
 gem "rails-i18n"  # 本地化
+gem 'bcrypt'      # 登录认证
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
