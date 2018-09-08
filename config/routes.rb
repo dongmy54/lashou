@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'register', to: 'applicants#new'
+  get 'login',    to: 'applicant_sessions#new'
+  post 'login',   to: 'applicant_sessions#create'
+  
   resources :applicants
 end
