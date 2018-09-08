@@ -39,7 +39,9 @@ class Applicant < ApplicationRecord
   }
   # 创建
   validates :email,    presence: true, on: :create
-  validates :email,    uniqueness: true, on: :update
+  validates :email,    uniqueness: true, on: :create
+  validates :email,
+            format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}, on: :create
   validates :password, length: {in: 6..10}, on: :create
   # 更新
   validates :name, :email, :age, :mobile, :city, :sex, :school, :education,
