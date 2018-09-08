@@ -1,5 +1,5 @@
 class ApplicantSessionsController < ApplicationController
-  before_action :login_valid, on: :create
+  before_action :login_valid, only: :create
 
   # 登录页面
   def new
@@ -25,6 +25,14 @@ class ApplicantSessionsController < ApplicationController
       flash[:warning] = t('password_not_match')
       render 'new'
     end
+  end
+
+  # 退出
+  def destroy
+    session[:applicant_id] = nil
+    @applicant             = nil
+    flash[:notice]         = t("success_exit")
+    redirect_to root_path
   end
 
   private
