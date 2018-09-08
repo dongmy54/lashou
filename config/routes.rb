@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'register', to: 'applicants#new'
   get 'login',    to: 'applicant_sessions#new'
   post 'login',   to: 'applicant_sessions#create'
+  delete 'exit',  to: 'applicant_sessions#destroy'
   
   resources :applicants
 end

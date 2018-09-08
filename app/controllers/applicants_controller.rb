@@ -1,7 +1,6 @@
 class ApplicantsController < ApplicationController
 
   def new
-    @applicant = Applicant.new
   end
 
   def create
