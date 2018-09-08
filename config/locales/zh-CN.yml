@@ -1,0 +1,9 @@
+"zh-CN":
+  common:
+    not_exist: '%{name}不存在'
+    can_not_be_empty: '%{name}不能为空'
+  welcome_you: '亲,%{name} 您好!'
+  success_login: '登录成功'
+  password_not_match: '密码与账号不匹配'
+  admin:
+    event_list: 活动列表管理

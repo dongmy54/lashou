@@ -1,0 +1,2 @@
+module ApplicantSessionsHelper
+end

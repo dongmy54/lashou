@@ -10,11 +10,27 @@
       %ul.nav.navbar-nav.navbar-right
         %li
           %a{:href => "#"} 企业版
-        %li
-          %a{:href => "#"}
-            %span.glyphicon.glyphicon-user
-            注册
-        %li
-          %a{:href => "#"}
-            %span.glyphicon.glyphicon-log-in
-            登录
+        - if current_applicant
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              =t("welcome_you", name: current_applicant_name)
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"} 我的个人主页
+              %li
+                %a{:href => "#"} 我的简历
+              %li
+                %a{:href => "#"} 我的收藏
+              %li.divider
+              %li
+                %a{:href => "#"} 退出
+        - else
+          %li
+            %a{:href => register_path}
+              %span.glyphicon.glyphicon-user
+              注册
+          %li
+            %a{:href => login_path}
+              %span.glyphicon.glyphicon-log-in
+              登录
