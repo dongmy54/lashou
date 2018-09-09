@@ -1,46 +1,7 @@
 .container
   .row.profile
     .col-md-3
-      .profile-sidebar
-        / SIDEBAR USERPIC
-        .profile-userpic
-          -if @applicant.avatar?
-            =image_tag(@applicant.avatar_url, class: 'img-responsive')
-          -else
-            =image_tag('https://i.loli.net/2018/09/09/5b94a0bddf79a.jpeg', class: 'img-responsive')
-        / END SIDEBAR USERPIC
-        / SIDEBAR USER TITLE
-        .profile-usertitle
-          .profile-usertitle-name
-            =@applicant.name
-          .profile-usertitle-job
-            Developer
-        / END SIDEBAR USER TITLE
-        / SIDEBAR BUTTONS
-        .profile-userbuttons
-          %button.btn.btn-success.btn-sm{:type => "button"} Follow
-          %button.btn.btn-danger.btn-sm{:type => "button"} Message
-        / END SIDEBAR BUTTONS
-        / SIDEBAR MENU
-        .profile-usermenu
-          %ul.nav
-            %li.active
-              %a{:href => "#"}
-                %i.glyphicon.glyphicon-home
-                个人主页
-            %li
-              %a{:href => "#"}
-                %i.glyphicon.glyphicon-user
-                我的收藏
-            %li
-              %a{:href => "#", :target => "_blank"}
-                %i.glyphicon.glyphicon-ok
-                我的简历
-            %li
-              %a{:href => "#"}
-                %i.glyphicon.glyphicon-flag
-                帮助
-        / END MENU
+      =render partial: 'profile_sidebar', locals: {applicant: @applicant}
     .col-md-9
       .profile-content
         =form_for @applicant do |f|
