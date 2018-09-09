@@ -1,7 +1,7 @@
 .container
   .row.profile
     .col-md-3
-      =render partial: 'profile_sidebar', locals: {applicant: @applicant}
+      =render partial: 'common/profile_sidebar', locals: {applicant: @applicant, status: 'p'}
     .col-md-9
       .profile-content
         =form_for @applicant do |f|
