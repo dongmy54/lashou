@@ -6,15 +6,11 @@ class ApplicationController < ActionController::Base
 
   # 当前求职者
   def current_applicant
-    @applicant ||= find_by_session
+    applicant_id = session[:applicant_id]
+    return nil unless applicant_id
+    Applicant.find_by_id(session[:applicant_id])
   end
 
   private
-    # session中找
-    def find_by_session
-      applicant_id = session[:applicant_id]
-      return nil unless applicant_id
-      Applicant.find_by_id(session[:applicant_id])
-    end
 
 end
