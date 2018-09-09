@@ -39,6 +39,9 @@ gem "rails-i18n"  # 本地化
 gem 'bcrypt'      # 登录认证
 gem 'awesome_print', '1.8.0'
 gem 'faker', '1.8.7'
+gem 'carrierwave'    # 上传图片
+gem 'mini_magick', '~> 4.8'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

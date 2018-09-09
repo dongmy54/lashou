@@ -1,0 +1,97 @@
+.container
+  .row.profile
+    .col-md-3
+      .profile-sidebar
+        / SIDEBAR USERPIC
+        .profile-userpic
+          -if @applicant.avatar?
+            =image_tag(@applicant.avatar_url, class: 'img-responsive')
+          -else
+            =image_tag('默认头像.jpeg', class: 'img-responsive')
+        / END SIDEBAR USERPIC
+        / SIDEBAR USER TITLE
+        .profile-usertitle
+          .profile-usertitle-name
+            =@applicant.name
+          .profile-usertitle-job
+            Developer
+        / END SIDEBAR USER TITLE
+        / SIDEBAR BUTTONS
+        .profile-userbuttons
+          %button.btn.btn-success.btn-sm{:type => "button"} Follow
+          %button.btn.btn-danger.btn-sm{:type => "button"} Message
+        / END SIDEBAR BUTTONS
+        / SIDEBAR MENU
+        .profile-usermenu
+          %ul.nav
+            %li.active
+              %a{:href => "#"}
+                %i.glyphicon.glyphicon-home
+                个人主页
+            %li
+              %a{:href => "#"}
+                %i.glyphicon.glyphicon-user
+                我的收藏
+            %li
+              %a{:href => "#", :target => "_blank"}
+                %i.glyphicon.glyphicon-ok
+                我的简历
+            %li
+              %a{:href => "#"}
+                %i.glyphicon.glyphicon-flag
+                帮助
+        / END MENU
+    .col-md-9
+      .profile-content
+        =form_for @applicant do |f|
+          .col-md-6
+            .form-group
+              =f.label :name, '姓名'
+              =f.text_field :name, class: 'form-control'
+            .form-group
+              =f.label :age, '年龄'
+              =f.number_field :age,  min: 1 ,max: 120, step: 1,class: 'form-control'
+            .form-group
+              =f.label :sex, '性别'
+              =f.select :sex, sex_select_arr, {}, class: 'form-control'
+            .form-group
+              =f.label :education, '学历'
+              =f.select :education, education_select_arr, {},class: 'form-control'
+            .form-group
+              =f.label :email, '邮箱'
+              =f.email_field :email, class: 'form-control'
+            .form-group
+              =f.label :avatar, '更换头像'
+              =image_tag @applicant.avatar.thumb.url if @applicant.avatar?
+              =f.file_field :avatar, class: 'form-control'
+              =f.hidden_field :avatar_cache    # 失败后 render 之前选中仍在
+          .col-md-6
+            .form-group
+              =f.label :mobile, '手机'
+              =f.telephone_field :mobile, class: 'form-control'
+            .form-group
+              =f.label :school, '学校'
+              =f.text_field :school, class: 'form-control'
+            .form-group
+              =f.label :city, '所在城市'
+              =f.text_field :city, class: 'form-control'
+            .form-group
+              =f.label :address, '家庭地址'
+              =f.text_field :address, placeholder: '选填内容', class: 'form-control'
+            .form-group
+              =f.label :blog_address, '博客地址'
+              =f.text_field :blog_address, placeholder: '选填内容',class: 'form-control'
+          .col-md-12
+            .form-group
+              =f.submit '更新信息', class: 'btn btn-warning'
+
+
+/ 便于 手机上可见底部
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/

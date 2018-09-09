@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     def find_by_session
       applicant_id = session[:applicant_id]
       return nil unless applicant_id
-      @applicant = Applicant.find_by_id(session[:applicant_id])
+      Applicant.find_by_id(session[:applicant_id])
     end
 
 end
