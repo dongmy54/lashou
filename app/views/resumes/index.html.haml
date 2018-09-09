@@ -9,4 +9,23 @@
           还没有自己的简历
           %a{href: new_applicant_resume_path(@applicant)} 去创建
         -else
-          下面这些简历
+          .text-center
+            .row
+              .col-lg-12.col-md-12.col-sm-12
+                .service-heading-block
+                  %h2.text-center.text-primary.title 我的简历
+                  %p.text-center.sub-title
+                    夏天是有声音的季节，花开的声音，草长的声音，我们轻轻长大的声音...
+                    %br/
+                    %br/
+              - @applicant.resumes.each_with_index do |resume, index|
+                -color_class,glyphicon_class = thumb_item_color_glyphicon_class(index)
+                =render partial: 'thumb_item', locals: {resume: resume, color_class: color_class,glyphicon_class: glyphicon_class}
+
+%br
+%br
+%br
+%br
+%br
+%br
+

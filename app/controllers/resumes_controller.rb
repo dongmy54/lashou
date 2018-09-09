@@ -1,7 +1,8 @@
 class ResumesController < ApplicationController
 
   def index
-    @applicant = Applicant.find(params[:applicant_id]) 
+    # 提前加载 简历
+    @applicant = Applicant.includes(:resumes).find(params[:applicant_id]) 
   end
 
   def new
