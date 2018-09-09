@@ -21,8 +21,9 @@
 
 # 求职者
 class Applicant < ApplicationRecord
+  has_many :resumes, dependent: :destroy
+
   mount_uploader :avatar, AvatarUploader
-  
   has_secure_password
 
   # 性别
