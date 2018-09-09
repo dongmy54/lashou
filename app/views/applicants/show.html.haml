@@ -5,9 +5,9 @@
         / SIDEBAR USERPIC
         .profile-userpic
           -if @applicant.avatar?
-            =image_tag('https://i.loli.net/2018/09/09/5b94a0bddf79a.jpeg', class: 'img-responsive')
+            =image_tag(@applicant.avatar_url, class: 'img-responsive')
           -else
-            =image_tag('默认头像.jpeg', class: 'img-responsive')
+            =image_tag('https://i.loli.net/2018/09/09/5b94a0bddf79a.jpeg', class: 'img-responsive')
         / END SIDEBAR USERPIC
         / SIDEBAR USER TITLE
         .profile-usertitle
