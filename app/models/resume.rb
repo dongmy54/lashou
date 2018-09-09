@@ -23,6 +23,6 @@ class Resume < ApplicationRecord
                         :project_experience, :special_skill, :title, :applicant_id
 
   validates_length_of   :apply_reason, :brief_intro, :career_experience, :life_creed, 
-                        :project_experience, :special_skill, :title, in: 1..120
+                        :project_experience, :special_skill, :title, in: 1..300
 
 end

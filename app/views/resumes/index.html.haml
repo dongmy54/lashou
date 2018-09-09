@@ -7,6 +7,6 @@
         -if @applicant.resumes.empty?
           =image_tag('https://i.loli.net/2018/09/09/5b94cfab50ba1.jpeg')
           还没有自己的简历
-          %a{href: '#'} 去创建
+          %a{href: new_applicant_resume_path(@applicant)} 去创建
         -else
           下面这些简历

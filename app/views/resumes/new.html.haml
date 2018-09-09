@@ -1,0 +1,57 @@
+.container
+  .row.profile
+    .col-md-3
+      =render partial: 'common/profile_sidebar', locals: {applicant: @applicant, status: 'r'}
+    .col-md-9
+      .profile-content
+        %h3.text-center 创建简历
+        %br
+        =form_for [@applicant,@resume], html: {:class => 'form-horizontal'} do |f|
+          .form-group
+            =f.label :title, '简历名称', class: "control-label col-sm-2"
+            .col-sm-9
+              =f.text_field :title, placeholder: '给简历取个名字...', class: "form-control"
+            .col-sm-1
+          .form-group
+            =f.label :life_creed, '人生信条', class: "control-label col-sm-2"
+            .col-sm-9
+              =f.text_area :life_creed, placeholder: '说说你相信什么,一句话就好...',class: "form-control"
+            .col-sm-1
+          .form-group
+            =f.label :brief_intro, '自我简介', class: "control-label col-sm-2"
+            .col-sm-9
+              =f.text_area :brief_intro, placeholder: '简单介绍自己...', rows: 3, class: "form-control"
+            .col-sm-1
+          .form-group
+            =f.label :career_experience, '工作经历', class: "control-label col-sm-2"
+            .col-sm-9
+              =f.text_area :career_experience, placeholder: '过去的工作经历...', rows: 3, class: "form-control"
+            .col-sm-1
+          .form-group
+            =f.label :apply_reason, '为何应聘', class: "control-label col-sm-2"
+            .col-sm-9
+              =f.text_area :apply_reason, placeholder: '关于本次应聘的想法...', rows: 3, class: "form-control"
+            .col-sm-1
+          .form-group
+            =f.label :special_skill, '个人特长', class: "control-label col-sm-2"
+            .col-sm-9
+              =f.text_area :special_skill, placeholder: '相比别人优势...', rows: 3, class: "form-control"
+            .col-sm-1
+          .form-group
+            =f.label :project_experience, '项目经历', class: "control-label col-sm-2"
+            .col-sm-9
+              =f.text_area :project_experience, placeholder: '做过哪些项目...', rows: 3, class: "form-control"
+            .col-sm-1
+          .form-group
+            .col-sm-offset-2.col-sm-9
+              =f.submit '创建简历', class: "form-control btn btn-info"
+
+%br
+%br
+%br
+%br
+%br
+%br
+
+
+
