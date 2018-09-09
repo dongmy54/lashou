@@ -14,13 +14,13 @@
     :age          => rand(1..80),
     :blog_address => "httpt://exmaple.com/b-rand(1..10)-a",
     :city         => Faker::Address.city,
-    :education    => Applicant::Education.values.sample,
+    :education    => Applicant::Education.sample,
     :email        => Faker::Internet.email,
     :mobile       => "1" + (Array.new(10) {rand(0..9)}).join(''),
     :name         => Faker::Name.unique.name,
     :password     => '123456',
     :school       => Faker::University.name,
-    :sex          => Applicant::Sex.values.sample
+    :sex          => Applicant::Sex.sample
     )
 end
 puts '-------------求职者创建完成---------------'

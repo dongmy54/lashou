@@ -21,6 +21,8 @@
 
 # 求职者
 class Applicant < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+  
   has_secure_password
 
   # 性别
