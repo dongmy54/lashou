@@ -1,0 +1,89 @@
+.container
+  .row.profile
+    .col-md-3
+      .profile-sidebar
+        / SIDEBAR USERPIC
+        .profile-userpic
+          %img.img-responsive{:alt => "", :src => "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536463299382&di=8668dcfcd24f47eaf39e2d3e929c44d6&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3D75631e223f12b31bc739c52db3281a4c%2F3ac79f3df8dcd100bc4f7a44748b4710b8122f87.jpg"}/
+        / END SIDEBAR USERPIC
+        / SIDEBAR USER TITLE
+        .profile-usertitle
+          .profile-usertitle-name
+            =@applicant.name
+          .profile-usertitle-job
+            Developer
+        / END SIDEBAR USER TITLE
+        / SIDEBAR BUTTONS
+        .profile-userbuttons
+          %button.btn.btn-success.btn-sm{:type => "button"} Follow
+          %button.btn.btn-danger.btn-sm{:type => "button"} Message
+        / END SIDEBAR BUTTONS
+        / SIDEBAR MENU
+        .profile-usermenu
+          %ul.nav
+            %li.active
+              %a{:href => "#"}
+                %i.glyphicon.glyphicon-home
+                个人主页
+            %li
+              %a{:href => "#"}
+                %i.glyphicon.glyphicon-user
+                我的收藏
+            %li
+              %a{:href => "#", :target => "_blank"}
+                %i.glyphicon.glyphicon-ok
+                我的简历
+            %li
+              %a{:href => "#"}
+                %i.glyphicon.glyphicon-flag
+                帮助
+        / END MENU
+    .col-md-9
+      .profile-content
+        =form_for @applicant do |f|
+          .col-md-6
+            .form-group
+              =f.label :name, '姓名'
+              =f.text_field :name, class: 'form-control'
+            .form-group
+              =f.label :age, '年龄'
+              =f.number_field :age, class: 'form-control'
+            .form-group
+              =f.label :sex, '性别'
+              =f.select :sex, sex_select_arr, {}, class: 'form-control'
+            .form-group
+              =f.label :education, '学历'
+              =f.select :education, education_select_arr, {},class: 'form-control'
+            .form-group
+              =f.label :邮箱, '邮箱'
+              =f.email_field :email, class: 'form-control'
+          .col-md-6
+            .form-group
+              =f.label :mobile, '手机'
+              =f.telephone_field :mobile, class: 'form-control'
+            .form-group
+              =f.label :school, '学校'
+              =f.text_field :school, class: 'form-control'
+            .form-group
+              =f.label :city, '所在城市'
+              =f.text_field :city, class: 'form-control'
+            .form-group
+              =f.label :address, '家庭地址'
+              =f.text_field :address, placeholders: '选填内容', class: 'form-control'
+            .form-group
+              =f.label :blog_address, '博客地址'
+              =f.text_field :blog_address, placeholders: '选填内容',class: 'form-control'
+          .col-md-12
+            .form-group
+              =f.submit '更新信息', class: 'btn btn-warning'
+
+
+/ 便于 手机上可见底部
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/
+%br/

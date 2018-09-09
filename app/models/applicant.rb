@@ -23,20 +23,11 @@
 class Applicant < ApplicationRecord
   has_secure_password
 
-  Sex = {
-    '0' => '男',
-    '1' => '女'
-  }
-
+  # 性别
+  Sex       = %w(男 女).freeze
   # 学历
-  Education = {
-    '0' => '小学',
-    '1' => '初中',
-    '2' => '高中',
-    '3' => '专科',
-    '4' => '本科',
-    '5' => '硕士（以上)'
-  }
+  Education = %w(小学 初中 高中 专科 本科 硕士以上).freeze
+
   # 创建
   validates :email,    presence: true, on: :create
   validates :email,    uniqueness: true, on: :create
@@ -48,7 +39,7 @@ class Applicant < ApplicationRecord
             presence: true, on: :update # 存在
 
   validates :name, :email, :mobile, :city, :school, :address, :blog_address,
-            length: {in: 1..50}, on: :update         # 长度
+            length: {in: 1..50}, allow_blank: true, on: :update         # 长度
 
   validates :email,
             format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}, on: :update
@@ -60,9 +51,9 @@ class Applicant < ApplicationRecord
   
   validates :age, numericality: {greater_than: 0}, on: :update
 
-  validates :sex, inclusion: {in: Sex.values}, on: :update
+  validates :sex, inclusion: {in: Sex}, on: :update
 
-  validates :education, inclusion: {in: Education.values}, on: :update
+  validates :education, inclusion: {in: Education}, on: :update
 
 
 end
