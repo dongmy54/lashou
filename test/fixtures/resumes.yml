@@ -9,6 +9,7 @@
 #  life_creed         :string
 #  project_experience :string
 #  special_skill      :string
+#  title              :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  applicant_id       :integer

@@ -4,4 +4,9 @@
       =render partial: 'common/profile_sidebar', locals: {applicant: @applicant, status: 'r'}
     .col-md-9
       .profile-content
-        一些内容...
+        -if @applicant.resumes.empty?
+          =image_tag('https://i.loli.net/2018/09/09/5b94cfab50ba1.jpeg')
+          还没有自己的简历
+          %a{href: '#'} 去创建
+        -else
+          下面这些简历

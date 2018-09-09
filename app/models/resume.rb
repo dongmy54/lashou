@@ -9,6 +9,7 @@
 #  life_creed         :string
 #  project_experience :string
 #  special_skill      :string
+#  title              :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  applicant_id       :integer
@@ -19,9 +20,9 @@ class Resume < ApplicationRecord
   belongs_to :applicant
 
   validates_presence_of :apply_reason, :brief_intro, :career_experience, :life_creed, 
-                        :project_experience, :special_skill, :applicant_id
+                        :project_experience, :special_skill, :title, :applicant_id
 
   validates_length_of   :apply_reason, :brief_intro, :career_experience, :life_creed, 
-                        :project_experience, :special_skill, in: 1..120
+                        :project_experience, :special_skill, :title, in: 1..120
 
 end
