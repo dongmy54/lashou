@@ -5,6 +5,11 @@ class ResumesController < ApplicationController
     @applicant = Applicant.includes(:resumes).find(params[:applicant_id]) 
   end
 
+  def show
+    @applicant = Applicant.find(params[:applicant_id])
+    @resume    = Resume.find(params[:id]) 
+  end
+
   def new
     @applicant = Applicant.find(params[:applicant_id])
     @resume    = Resume.new

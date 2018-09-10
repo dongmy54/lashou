@@ -27,12 +27,14 @@
           个人信息
       %li{class: status == 'c' ? 'active' : ''}
         %a{:href => "#"}
-          %i.glyphicon.glyphicon-user
+          %i.glyphicon.glyphicon-shopping-cart
           我的收藏
       %li{class: status == 'r' ? 'active' : ''}
         %a{:href => applicant_resumes_path(applicant)}
-          %i.glyphicon.glyphicon-ok
+          %i.glyphicon.glyphicon-th-list
           我的简历
+      / 简历详情页 独有
+      =yield :resume_detail
       %li{class: status == 'h' ? 'active' : ''}
         %a{:href => '#'}
           %i.glyphicon.glyphicon-flag

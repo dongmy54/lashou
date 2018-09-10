@@ -22,7 +22,11 @@ class Resume < ApplicationRecord
   validates_presence_of :apply_reason, :brief_intro, :career_experience, :life_creed, 
                         :project_experience, :special_skill, :title, :applicant_id
 
-  validates_length_of   :apply_reason, :brief_intro, :career_experience, :life_creed, 
+  # 为了便于显示 不要太长
+  validates_presence_of :brief_intro, in: 1..32
+
+  validates_length_of   :apply_reason, :career_experience, :life_creed, 
                         :project_experience, :special_skill, :title, in: 1..400
+
 
 end

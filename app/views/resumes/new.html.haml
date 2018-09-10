@@ -15,7 +15,7 @@
           .form-group
             =f.label :life_creed, '人生信条', class: "control-label col-sm-2"
             .col-sm-9
-              =f.text_area :life_creed, placeholder: '说说你相信什么,一句话就好...',class: "form-control"
+              =f.text_area :life_creed, placeholder: '说说你相信什么,一句话就好(不要超过30个字符）...',maxlength: 30,class: "form-control"
             .col-sm-1
           .form-group
             =f.label :brief_intro, '自我简介', class: "control-label col-sm-2"
