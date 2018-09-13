@@ -4,7 +4,6 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title resume pdf
     :css
-      / 生产环境中 assets 不可用
-      #{(Rails.application.assets || ::Sprockets::Railtie.build_environment(Rails.application)).find_asset('application.scss').to_s}
+      #{Rails.application.assets.find_asset('application.scss').to_s}
   %body
     = yield
