@@ -1,67 +1,10 @@
 .container
   .row.profile
     .col-md-3
-      =render partial: 'common/profile_sidebar', locals: {applicant: @applicant, status: 'n'}
+      =render partial: 'common/profile_sidebar', locals: {applicant: @applicant, status: 'd'}
     .col-md-9
       .profile-content
-        =render 'detail'
-        %br
-        %br
-        %br
-
-%style
-  :plain
-    .resume-avatar {
-      width: auto;
-      height: auto;
-      max-width: 120px;
-    }
-
-    .resume-sub-title {
-      font-size: 15px;
-      font-weight: 100;
-    }
-
-    .resume-life-creed {
-      font-size: 18px;
-      font-weight: 300;
-      margin-top: -30px;
-    }
-
-    .resume-divide-line {
-      padding-bottom: 20px;
-      border-bottom: 4px solid #3F3F3F;
-    }
-    
-    .resume-item {
-      display: flex;
-      justify-content: space-between;
-      padding-top: 10px;
-    }
-
-    .resume-item-title {
-      color: #337ab7;
-      font-size: 1.8em;
-      font-weight: 350;
-      text-align: center;
-      width: 19%;
-    }
-
-    .resume-item-content {
-      width: 80%;
-      font-size: 15px;
-      font-weight: 300;
-    }
-
-    .contact-title {
-      font-weight: 400;
-      margin-right: 8px;
-    }
-
-
-/ 详情页 左侧多标签
-=content_for :resume_detail do
-  %li
-    %a.active{href: '#'}
-      %i.glyphicon.glyphicon-bookmark
-      简历详细
+        .row
+          %a.btn.btn-default.pull-right.resume-download-icon{target: "_black", href: applicant_resume_path(@applicant,@resume, format: :pdf)}
+            %span.glyphicon.glyphicon-download-alt 下载
+        =render partial: 'detail', locals: {applicant: @applicant, resume: @resume}

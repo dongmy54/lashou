@@ -15,4 +15,5 @@ module ApplicantsHelper
      Applicant::Education.map{|i| [i,i]}
   end
 
+  
 end

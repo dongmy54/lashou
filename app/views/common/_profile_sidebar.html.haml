@@ -3,6 +3,7 @@
   .profile-userpic
     -if applicant.avatar?
       =image_tag(applicant.avatar_url, class: 'img-responsive')
+      /-full_image = image_url(applicant.avatar_url)
     -else
       =image_tag('https://i.loli.net/2018/09/09/5b94a0bddf79a.jpeg', class: 'img-responsive')
   / END SIDEBAR USERPIC
@@ -33,10 +34,12 @@
         %a{:href => applicant_resumes_path(applicant)}
           %i.glyphicon.glyphicon-th-list
           我的简历
-      / 简历详情页 独有
-      =yield :resume_detail
+      %li.active{class: status == 'd' ? '' : 'hidden'}
+        %a{href: @resume ? applicant_resume_path(applicant,@resume) : '#'}
+          %i.glyphicon.glyphicon-bookmark
+            简历详细
       %li{class: status == 'h' ? 'active' : ''}
         %a{:href => '#'}
           %i.glyphicon.glyphicon-flag
-          帮助
+            帮助
   / END MENU

@@ -7,7 +7,12 @@ class ResumesController < ApplicationController
 
   def show
     @applicant = Applicant.find(params[:applicant_id])
-    @resume    = Resume.find(params[:id]) 
+    @resume    = Resume.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf { send_resume_pdf(@applicant, @resume)}
+    end
   end
 
   def new
@@ -29,9 +34,21 @@ class ResumesController < ApplicationController
     end
   end
 
+
   private
     def resume_params
       params.require(:resume).permit(:life_creed, :brief_intro, :career_experience, :apply_reason,
                                      :special_skill, :project_experience, :title)
     end
+
+    def send_resume_pdf(applicant,resume)
+      resume_pdf = ResumePdf.new(applicant, resume)
+
+      send_file resume_pdf.to_pdf,
+        filename:    resume_pdf.filename,
+        type:        "application/pdf",
+        disposition: "inline"
+    end
+
+
 end

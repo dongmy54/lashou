@@ -2,43 +2,45 @@
 .center-space{style: 'display: inline-block;width: 59%'}
   .service-heading-block
     %h2.text-center.text-primary.title
-      =@applicant.name
+      =applicant.name
     %p.text-center.resume-sub-title
-      =resume_sub_title(@applicant)
+      =resume_sub_title(applicant)
     %p.text-center.resume-sub-title
-      =@applicant.school
+      =applicant.school
 .right-space{style: 'display: inline-block;width: 19%'}
-  -if @applicant.avatar?
-    =image_tag(@applicant.avatar_url, class: 'resume-avatar')
+  / 本地 html转pdf 不能获取图片
+  -if applicant.avatar? && Rails.env.production?
+    / 绝对路径 带 host
+    =image_tag(image_url(applicant.avatar_url), class: 'resume-avatar')
   -else
     =image_tag('https://i.loli.net/2018/09/09/5b94a0bddf79a.jpeg', class: 'resume-avatar')
 .resume-life-creed
-  =@resume.life_creed.slice(0..30)
+  =resume.life_creed.slice(0..30)
 .resume-divide-line
 .resume-item
   .resume-item-title 简介
   .resume-item-content
-    =sanitize resume_desc_html_content(@resume.brief_intro)
+    =sanitize resume_desc_html_content(resume.brief_intro)
 .resume-divide-line
 .resume-item
   .resume-item-title 工作经历
   .resume-item-content
-    =resume_desc_html_content(@resume.career_experience)
+    =resume_desc_html_content(resume.career_experience)
 .resume-divide-line
 .resume-item
   .resume-item-title 为何应聘
   .resume-item-content
-    =resume_desc_html_content(@resume.apply_reason)
+    =resume_desc_html_content(resume.apply_reason)
 .resume-divide-line
 .resume-item
   .resume-item-title 有何特长
   .resume-item-content
-    =resume_desc_html_content(@resume.special_skill)
+    =resume_desc_html_content(resume.special_skill)
 .resume-divide-line
 .resume-item
   .resume-item-title 项目经历
   .resume-item-content
-    =resume_desc_html_content(@resume.project_experience)
+    =resume_desc_html_content(resume.project_experience)
 .resume-divide-line
 .resume-item
   .resume-item-title 联系方式
@@ -46,18 +48,23 @@
     %p
       %span.contact-title
         手机:
-      =@applicant.mobile
+      =applicant.mobile
     %p
       %span.contact-title
         邮箱:
-      =@applicant.email
-    -if @applicant.address.present?
+      =applicant.email
+    -if applicant.address.present?
       %p
         %span.contact-title
           家庭地址:
-        =@applicant.address
-    -if @applicant.blog_address.present?
+        =applicant.address
+    -if applicant.blog_address.present?
       %p
         %span.contact-title
           个人博客:
-        =@applicant.blog_address
+        =applicant.blog_address
+%br
+%br
+%br
+
+

@@ -41,7 +41,8 @@ gem 'awesome_print', '1.8.0'
 gem 'faker', '1.8.7'
 gem 'carrierwave'    # 上传图片
 gem 'mini_magick', '~> 4.8'
-
+gem 'pdfkit', '0.8.2' # pdf下载
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
