@@ -33,30 +33,28 @@ class Applicant < ApplicationRecord
 
   # 创建
   validates :email,    presence: true, on: :create
-  validates :email,    uniqueness: true, on: :create
-  validates :email,
-            format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}, on: :create
   validates :password, length: {in: 6..10}, on: :create
-  # 更新
+  validates :password, length: {in: 6..10}, allow_blank: true
+  
   validates :name, :email, :age, :mobile, :city, :sex, :school, :education,
             presence: true, on: :update # 存在
 
   validates :name, :email, :mobile, :city, :school, :address, :blog_address,
-            length: {in: 1..50}, allow_blank: true, on: :update         # 长度
+            length: {in: 1..50}, allow_blank: true         # 长度
 
   validates :email,
-            format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}, on: :update
+            format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}
 
-  validates :email, uniqueness: true, on: :update
+  validates :email, uniqueness: true
 
   validates :mobile,
-            format: {with: /\d{11}/}, on: :update
+            format: {with: /\d{11}/}, allow_blank: true
   
-  validates :age, numericality: {greater_than: 0}, on: :update
+  validates :age, numericality: {greater_than: 0}, allow_blank: true
 
-  validates :sex, inclusion: {in: Sex}, on: :update
+  validates :sex, inclusion: {in: Sex}, allow_blank: true
 
-  validates :education, inclusion: {in: Education}, on: :update
+  validates :education, inclusion: {in: Education}, allow_blank: true
 
 
 end
