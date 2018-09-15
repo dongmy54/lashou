@@ -9,6 +9,7 @@
 #  name            :string
 #  password_digest :string
 #  scale           :string
+#  status          :string           default("待审核")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  industry_id     :integer

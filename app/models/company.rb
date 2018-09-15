@@ -9,6 +9,7 @@
 #  name            :string
 #  password_digest :string
 #  scale           :string
+#  status          :string           default("待审核")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  industry_id     :integer
@@ -26,6 +27,8 @@ class Company < ApplicationRecord
 
   # 规模
   Scale = %w(1-50人 50-100人 100-500人 500人以上).freeze
+  # 状态
+  Status = %w(待审核 审核通过 审核失败)
 
   validates_uniqueness_of  :name
   validates_presence_of    :name, :scale, :city
@@ -34,5 +37,6 @@ class Company < ApplicationRecord
 
   validates :password, length: {in: 6..10}, on: :create
   validates :scale, inclusion: {in: Scale}
+  validates :status, inclusion: {in: Status}
 
 end
