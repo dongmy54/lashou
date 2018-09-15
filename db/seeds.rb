@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 # 创建求职者
 10.times do
   applicant = Applicant.create!(
@@ -35,19 +34,31 @@
 end
 puts '-------------求职者、简历创建完成---------------'
 
+
 Industry::Type.each do |type|
   industry = Industry.create!(name: type)
 
+  puts "------#{type}行业被成功创建--------"
+
   # 每个行业 十家公司
   10.times do
+    # 找一个还没有被用的名字
+    name = Faker::Company.name
+    while Company.find_by_name(name)
+      name = Faker::Company.name
+    end
+
     industry.companies.create!(
       :city            => Faker::Address.city,
       :desc            => '我们是一家积极阳光的公司,工作氛围轻松。',
-      :name            => Faker::Company.name,
+      :name            =>  name,
       :password        => '123456', 
       :scale           => Company::Scale.sample
       )
+    puts "------------#{type}行业：#{name}公司成功创建-------------"
   end
 end
+puts '-------------行业、公司创建完成---------------'
+
 
 
