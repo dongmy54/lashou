@@ -35,7 +35,7 @@
           %i.glyphicon.glyphicon-th-list
           我的简历
       %li.active{class: status == 'd' ? '' : 'hidden'}
-        %a{href: @resume ? applicant_resume_path(applicant,@resume) : '#'}
+        %a{href: (@resume && !@resume.new_record?) ? applicant_resume_path(applicant,@resume) : '#'}
           %i.glyphicon.glyphicon-bookmark
             简历详细
       %li{class: status == 'h' ? 'active' : ''}
