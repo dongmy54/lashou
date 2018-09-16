@@ -6,6 +6,7 @@ class Enterprise::CompaniesController < EnterprisesController
   end
 
   def new
+    return redirect_to enterprise_overview_path if current_account # 如果已经登陆
     @company = Company.new
     render :new, layout: 'company_apply_login'
   end

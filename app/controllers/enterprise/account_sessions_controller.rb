@@ -14,6 +14,7 @@ class Enterprise::AccountSessionsController < EnterprisesController
 
     if @account.authenticate(params[:password])
       flash[:notice] = t('success_login')
+      account_login
       redirect_to enterprise_overview_path
     else
       flash[:warning] = t('password_not_match')
@@ -23,5 +24,11 @@ class Enterprise::AccountSessionsController < EnterprisesController
 
   def destroy
   end
+
+  private
+
+    def account_login
+      session[:account_id] = @account.id
+    end
 
 end

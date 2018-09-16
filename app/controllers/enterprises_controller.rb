@@ -11,5 +11,10 @@ class EnterprisesController < ActionController::Base
     @company
   end
 
+  def current_account
+    return nil unless session[:account_id]
+    @account = Account.find_by_id(session[:account_id])
+    @account
+  end
 
 end
