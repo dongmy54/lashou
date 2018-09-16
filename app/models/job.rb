@@ -18,6 +18,8 @@
 #
 #  index_jobs_on_company_id  (company_id)
 #
-
+# 职位
 class Job < ApplicationRecord
+  belongs_to :company
+  
 end
