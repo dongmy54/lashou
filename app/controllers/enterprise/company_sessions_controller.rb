@@ -23,6 +23,9 @@ class Enterprise::CompanySessionsController < EnterprisesController
   end
 
   def destroy
+    session[:company_id] = nil
+    flash[:notice]       = t("success_exit")
+    redirect_to root_path
   end
 
   private

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'apply',          to: 'companies#new'
     get 'company_login',  to: 'company_sessions#new'
     post 'company_login', to: 'company_sessions#create'
+    delete 'exit',        to: 'company_sessions#destroy'
 
     resources :companies, only: [:show,:create]
   end

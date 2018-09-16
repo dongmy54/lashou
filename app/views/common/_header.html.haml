@@ -8,8 +8,9 @@
       %a.navbar-brand{:href => "/"} 拉手网
     #myNavbar.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{:href => enterprise_root_path} 企业版
+        -unless current_applicant
+          %li
+            %a{:href => enterprise_root_path} 企业版
         - if current_applicant
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}

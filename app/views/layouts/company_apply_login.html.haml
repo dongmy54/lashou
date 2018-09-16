@@ -21,21 +21,14 @@
           %ul.nav.navbar-nav.navbar-right
             %li
               %a{:href => enterprise_root_path} 企业版
-            - if true #current_company
+            - if current_company
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                  =image_tag('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537084933862&di=5e2a5c8e0fc281d808d1bb12316b32cd&imgtype=0&src=http%3A%2F%2Fis4.mzstatic.com%2Fimage%2Fpf%2Fus%2Fr30%2FPurple7%2Fv4%2Ff2%2F73%2F0c%2Ff2730c1a-e58f-084a-191a-90e3586f024a%2Fmzl.lngjyatg.png', class: 'company-logo')
+                  =image_tag( current_company.logo_url, class: 'company-logo')
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href => '#'} 个人主页
-                  %li
-                    %a{:href => '#'} 我的简历
-                  %li
-                    %a{:href => "#"} 我的收藏
-                  %li.divider
-                  %li
-                    =link_to '退出', exit_path, method: :delete
+                    =link_to '退出', enterprise_exit_path, method: :delete
             - else
               %li
                 %a{:href => register_path}
