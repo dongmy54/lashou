@@ -4,6 +4,7 @@ class EnterprisesController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_company
+  helper_method :current_account
 
   def current_company
     return nil unless session[:company_id]

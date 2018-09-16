@@ -3,6 +3,7 @@ class Enterprise::AccountsController < EnterprisesController
 
   # 后台概览
   def overview
+    @company = current_account.company
   end
 
   private
