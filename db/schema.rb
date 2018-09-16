@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180916120349) do
+ActiveRecord::Schema.define(version: 20180916141303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,12 +68,12 @@ ActiveRecord::Schema.define(version: 20180916120349) do
   create_table "jobs", force: :cascade do |t|
     t.integer "company_id"
     t.string "name"
-    t.string "type"
+    t.string "worker_type"
     t.decimal "start_salary", precision: 4, scale: 1
     t.decimal "end_salary", precision: 4, scale: 1
     t.string "education"
     t.string "worker_experience"
-    t.string "job_desc"
+    t.text "job_desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_jobs_on_company_id"

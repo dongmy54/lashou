@@ -40,12 +40,12 @@ Industry::Type.each do |type|
 
   puts "------#{type}行业被成功创建--------"
 
-  # 每个行业 十家公司
-  10.times do
-    # 找一个还没有被用的名字
-    name = Faker::Company.name
+  # 待审核
+  5.times do
+    # 名字不重复
+    name = SeedCompanyName.sample
     while Company.find_by_name(name)
-      name = Faker::Company.name
+      name = SeedCompanyName.sample
     end
 
     industry.companies.create!(
@@ -57,18 +57,44 @@ Industry::Type.each do |type|
       )
     puts "------------#{type}行业：#{name}公司成功创建-------------"
   end
+
+  # 审核通过
+  5.times do
+    name = SeedCompanyName.sample
+    while Company.find_by_name(name)
+      name = SeedCompanyName.sample
+    end
+
+    company = industry.companies.create!(
+      :city            => Faker::Address.city,
+      :desc            => '我们是一家积极阳光的公司,工作氛围轻松。',
+      :name            =>  name,
+      :password        => '123456', 
+      :scale           => Company::Scale.sample,
+      :status          => '审核通过'
+      )
+    
+    company.accounts.create!(name: Faker::Name.unique.name, password: '123456', is_main: true)  # 主账号
+    company.accounts.create!(name: Faker::Name.unique.name, password: '123456', is_main: false)
+
+    puts '------------- 公司 account账户创建完成--------------'
+
+    job = company.jobs.create!(
+        :education         => Job::Education.sample,
+        :end_salary        => rand(5..50),
+        :job_desc          => "岗位职责：\n1、负责公司SAAS产品的市场调研、需求分析及功能设计；\n2、根据产品调研目标，输出高质量的竞品分析文档；\n3、根据产品阶段目标，分解产品功能结构，并输出用户体验好、逻辑清晰的产品原型；\n4、协调UI、UE进行产品信息架构设计、 交互设计及视觉设计；\n5、在产品用户体验层面，包含UX和UI层面，能够根据产品用户群体，对功能提出建设性的解决意见；\n6、产品开发推进过程中，能够快速高效的推动UI、研发和测试等的工作；\n7、对于产品需求的收集、分析、提炼、整理过程，能够根据产品的目标、资源等条件，进行正确的处理；\n\n任职要求：\n1、本科及以上学历，计算机、市场营销专业优先；\n2、3年及以上产品岗位经验，参加过完整的产品规划、需求设计和研发工作；\n3、具备高质量的产品原型、需求文档输出能力，此能力为必须具备的能力；\n4、具备竞品分析、行业分析、用户研究的能力和经验；\n5、熟悉交互规范、UI规范、原型规范，并能够根据产品目标构建不同的规范要求。\n6、熟练相应的产品工具，包括且不限于Axure、visio、mindjet等；\n\n7、对于社会变迁、人性、生活，有自己独立的思考能力；\n\n8、抗压力强，具备良好的沟通能力与团队协作能力，善于分享且需具有极强的执行力；\n",
+        :name              => SeedJobName.sample,
+        :start_salary      => rand(1..5),
+        :worker_type       => Job::WorkerType.sample,
+        :worker_experience => Job::WorkerExperience.sample
+      )
+    puts "------------#{type}行业：#{name}公司 #{job.name}工作成功创建-------------"
+  end
+
 end
-puts '-------------行业、公司创建完成---------------'
+puts '======================行业、公司、账户、职位 创建完成====================='
 
 
-# 取一家公司 审核通过 创建account
-company = Company.first
-company.update!(:status => '审核通过')
-
-company.accounts.create!(name: '张三', password: '123456', is_main: true)  # 主账号
-company.accounts.create!(name: '王五', password: '123456', is_main: false)
-
-puts '------------- account 创建完成--------------'
 
 
 
