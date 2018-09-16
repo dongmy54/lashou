@@ -14,7 +14,7 @@ class Enterprise::AccountSessionsController < EnterprisesController
 
     if @account.authenticate(params[:password])
       flash[:notice] = t('success_login')
-      redirect_to enterprise_root_path
+      redirect_to enterprise_overview_path
     else
       flash[:warning] = t('password_not_match')
       render :new, layout: 'company_apply_login'

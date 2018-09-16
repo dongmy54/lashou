@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     post 'account_login',  to: 'account_sessions#create'
     delete 'account_exit', to: 'account_sessions#destroy'
 
+    # 后台处理
+    get 'overview', to: 'accounts#overview'
+
     resources :companies, only: [:show,:create]
   end
 
