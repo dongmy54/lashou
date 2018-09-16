@@ -6,9 +6,21 @@ Rails.application.routes.draw do
   get 'login',    to: 'applicant_sessions#new'
   post 'login',   to: 'applicant_sessions#create'
   delete 'exit',  to: 'applicant_sessions#destroy'
-  
+
   resources :applicants do
     resources :resumes
   end
+
+  # 企业版
+  namespace :enterprise do
+    root 'companies#new'
+
+    get 'apply',          to: 'companies#new'
+    get 'company_login',  to: 'company_sessions#new'
+    post 'company_login', to: 'company_sessions#create'
+
+    resources :companies, only: [:show,:create]
+  end
+
 
 end

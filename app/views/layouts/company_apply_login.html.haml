@@ -1,0 +1,55 @@
+/ 企业 模版
+!!!
+%html{:lang => "en"}
+  %head
+    %title Lashou
+    %meta{name: 'viewport', content: "width=device-width, initial-scale=1"}
+    =csrf_meta_tags
+    =stylesheet_link_tag    'application', media: "all", 'data-turbolinks-track': 'reload'
+    =javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    %nav.navbar.navbar-default{style: "background: #414755;"}
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "/"} 拉手网
+        #myNavbar.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{:href => enterprise_root_path} 企业版
+            - if false
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                  =t("welcome_you", name: current_applicant_name)
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => applicant_path(current_applicant)} 个人主页
+                  %li
+                    %a{:href => applicant_resumes_path(current_applicant)} 我的简历
+                  %li
+                    %a{:href => "#"} 我的收藏
+                  %li.divider
+                  %li
+                    =link_to '退出', exit_path, method: :delete
+            - else
+              %li
+                %a{:href => register_path}
+                  %span.glyphicon.glyphicon-user
+                  注册
+              %li
+                %a{:href => login_path}
+                  %span.glyphicon.glyphicon-log-in
+                  登录
+             
+
+    .container-fluid{style: "background: #eef5f9;"}
+      =render "common/flash"
+      =yield
+       
+      %footer.footer.text-center
+        所有版权归 dongmingyan 所有

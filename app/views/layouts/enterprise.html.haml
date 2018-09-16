@@ -36,15 +36,6 @@
             / ==============================================================
             %a.navbar-brand{:href => "index.html"}
               / Logo icon
-              %b.logo-icon
-                / You can put here icon as well // <i class="wi wi-sunset"></i> //
-                / Dark Logo icon
-                /%img.dark-logo{:alt => "homepage", :src => "公司log"}
-                =image_tag("公司logo.png", class: 'dark-logo', :alt => "homepage")
-                / Light Logo icon
-                =image_tag("公司logo.png", class: 'light-logo', :alt => "homepage")
-              / End Logo icon
-              / Logo text
               %span.logo-text
                 / dark Logo text
                 =image_tag("公司logo.png", class: 'dark-logo', :alt => "homepage")
@@ -81,13 +72,13 @@
                 .dropdown-menu.dropdown-menu-right.user-dd.animated
                   %a.dropdown-item{:href => "javascript:void(0)"}
                     %i.ti-user.m-r-5.m-l-5
-                    My Profile
+                    个人信息
                   %a.dropdown-item{:href => "javascript:void(0)"}
                     %i.ti-wallet.m-r-5.m-l-5
-                    My Balance
+                    退出
                   %a.dropdown-item{:href => "javascript:void(0)"}
                     %i.ti-email.m-r-5.m-l-5
-                    Inbox
+                    待用
               / ==============================================================
               / User profile and search
               / ==============================================================
@@ -110,61 +101,43 @@
                   .user-pic
                     %img.rounded-circle{:alt => "users", :src => "http://p7.qhimg.com/t01a4b62d3c967c19cb.png", :width => "40"}/
                   .user-content.hide-menu.m-l-10
-                    %a#Userdd{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "javascript:void(0)", :role => "button"}
+                    %a#Userdd{"aria-expanded" => "false", "aria-haspopup" => "true", :href => "javascript:void(0)", :role => "button"}
                       %h5.m-b-0.user-name.font-medium
                         Steave Jobs
                         %i.fa.fa-angle-down
                       %span.op-5.user-email varun@gmail.com
-                    .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "Userdd"}
-                      %a.dropdown-item{:href => "javascript:void(0)"}
-                        %i.ti-user.m-r-5.m-l-5
-                        My Profile
-                      %a.dropdown-item{:href => "javascript:void(0)"}
-                        %i.ti-wallet.m-r-5.m-l-5
-                        My Balance
-                      %a.dropdown-item{:href => "javascript:void(0)"}
-                        %i.ti-email.m-r-5.m-l-5
-                        Inbox
-                      .dropdown-divider
-                      %a.dropdown-item{:href => "javascript:void(0)"}
-                        %i.ti-settings.m-r-5.m-l-5
-                        Account Setting
-                      .dropdown-divider
-                      %a.dropdown-item{:href => "javascript:void(0)"}
-                        %i.fa.fa-power-off.m-r-5.m-l-5
-                        Logout
                 / End User Profile
               %li.p-15.m-t-10
                 %a.btn.btn-block.create-btn.text-white.no-block.d-flex.align-items-center{:href => "javascript:void(0)"}
                   %i.fa.fa-plus-square
-                  %span.hide-menu.m-l-5 Create New
+                  %span.hide-menu.m-l-5 发布职位
               / User Profile
               %li.sidebar-item
                 %a.sidebar-link.waves-effect.waves-dark.sidebar-link{"aria-expanded" => "false", :href => "index.html"}
                   %i.mdi.mdi-view-dashboard
-                  %span.hide-menu Dashboard
+                  %span.hide-menu 企业概览
               %li.sidebar-item
                 %a.sidebar-link.waves-effect.waves-dark.sidebar-link{"aria-expanded" => "false", :href => "pages-profile.html"}
                   %i.mdi.mdi-account-network
-                  %span.hide-menu Profile
+                  %span.hide-menu 完善企业信息
               %li.sidebar-item
                 %a.sidebar-link.waves-effect.waves-dark.sidebar-link{"aria-expanded" => "false", :href => "table-basic.html"}
                   %i.mdi.mdi-border-all
-                  %span.hide-menu Table
+                  %span.hide-menu 已发布职位
               %li.sidebar-item
                 %a.sidebar-link.waves-effect.waves-dark.sidebar-link{"aria-expanded" => "false", :href => "icon-material.html"}
                   %i.mdi.mdi-face
-                  %span.hide-menu Icon
+                  %span.hide-menu  收到简历
               %li.sidebar-item
                 %a.sidebar-link.waves-effect.waves-dark.sidebar-link{"aria-expanded" => "false", :href => "starter-kit.html"}
                   %i.mdi.mdi-file
-                  %span.hide-menu Blank
+                  %span.hide-menu 新增管理员
               %li.sidebar-item
                 %a.sidebar-link.waves-effect.waves-dark.sidebar-link{"aria-expanded" => "false", :href => "error-404.html"}
                   %i.mdi.mdi-alert-outline
                   %span.hide-menu 404
               %li.text-center.p-40.upgrade-btn
-                %a.btn.btn-block.btn-danger.text-white{:href => "https://wrappixel.com/templates/xtremeadmin/", :target => "_blank"} Upgrade to Pro
+                %a.btn.btn-block.btn-danger.text-white{:href => root_path, :target => "_blank"} 返回网站首页
           / End Sidebar navigation
         / End Sidebar scroll
       / ==============================================================
@@ -187,15 +160,9 @@
                     %li.breadcrumb-item
                       %a{:href => "#"} Home
                     %li.breadcrumb-item.active{"aria-current" => "page"} Library
-            .col-7
-              .text-right.upgrade-btn
-                %a.btn.btn-danger.text-white{:href => "https://wrappixel.com/templates/xtremeadmin/", :target => "_blank"} Upgrade to Pro
-        / ==============================================================
-        / End Bread crumb and right sidebar toggle
-        / ==============================================================
-        / ==============================================================
-        / Container fluid
-        / ==============================================================
+            / .col-7
+            /   .text-right.upgrade-btn
+            /     %a.btn.btn-danger.text-white{:href => "https://wrappixel.com/templates/xtremeadmin/", :target => "_blank"} Upgrade to Pro
         .container-fluid
           待完成内容
           =yield
@@ -206,18 +173,8 @@
         / footer
         / ==============================================================
         %footer.footer.text-center
-          All Rights Reserved by Xtreme Admin. Designed and Developed by
-          = succeed "." do
-            %a{:href => "https://wrappixel.com"} WrapPixel
-        / ==============================================================
-        / End footer
-        / ==============================================================
-      / ==============================================================
-      / End Page wrapper
-      / ==============================================================
-    / ==============================================================
-    / End Wrapper
-    / ==============================================================
-    / ==============================================================
-    / All Jquery
-    / ==============================================================
+          所有版权归 dongmingyan 所有
+    
+
+
+    
