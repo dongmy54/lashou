@@ -3,7 +3,11 @@ class LogoUploader < CarrierWave::Uploader::Base
 
   storage :file
   
-  process resize_to_fit: [500, 500]
+  process resize_to_fit: [40, 40]
+
+  version :middle do
+    process resize_to_fit: [150, 150]
+  end
   
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
