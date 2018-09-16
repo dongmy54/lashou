@@ -30,27 +30,27 @@
               %span.company-content-title
                 公司名称:
               %span.company-content-info
-                腾讯
+                =@company.name
             .company-content-item
               %span.company-content-title
                 公司规模:
               %span.company-content-info
-                小规模
+                =@company.scale
             .company-content-item
               %span.company-content-title
                 所属行业:
               %span.company-content-info
-                电子游戏
+                =@company.industry.name
             .company-content-item
               %span.company-content-title
                 审核状态:
               %span.company-content-info
-                待审核
+                =@company.status
             .company-content-item
               %span.company-content-title
                 审核信息:
               %span.company-content-info
-                由于某某原因你的审核结果暂未通过，请下次努力和黑色大翻领撒的哈是大方了是大后方辣的是否会撒地方谁都会发生的返回拉萨地方啊谁都会发生的
+                =@company.audit_comment || '无'
 
 
 

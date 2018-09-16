@@ -20,7 +20,9 @@
         #myNavbar.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a{:href => enterprise_root_path} 企业版
+              %a{:href => '#', style: "color: white;"}
+                %span.glyphicon.glyphicon-home
+                后台登录
             - if current_company
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
@@ -31,13 +33,13 @@
                     =link_to '退出', enterprise_exit_path, method: :delete
             - else
               %li
-                %a{:href => register_path}
+                %a{:href => enterprise_apply_path, style: "color: white;"}
                   %span.glyphicon.glyphicon-user
-                  注册
+                  公司申请
               %li
-                %a{:href => login_path}
+                %a{:href => enterprise_company_login_path, style: "color: white;"}
                   %span.glyphicon.glyphicon-log-in
-                  登录
+                  公司登录
              
 
     .container-fluid{style: "background: #eef5f9;"}

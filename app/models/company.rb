@@ -3,6 +3,7 @@
 # Table name: companies
 #
 #  id              :bigint(8)        not null, primary key
+#  audit_comment   :string
 #  city            :string
 #  desc            :string
 #  logo            :string
