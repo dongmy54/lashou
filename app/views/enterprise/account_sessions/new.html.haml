@@ -1,0 +1,26 @@
+.row
+  .col-md-4
+  .col-md-4.center-block
+    .col-sm-9.col-sm-offset-3
+      %h3.text-center 后台登录
+    =form_tag enterprise_account_login_path, {:class => 'form-horizontal'} do
+      .form-group
+        =label_tag :name, '账号',class: "control-label col-sm-3"
+        .col-sm-9
+          =text_field_tag :name, nil, class: "form-control"
+      .form-group
+        =label_tag :password, '密码', class: "control-label col-sm-3"
+        .col-sm-9
+          =password_field_tag :password, nil, class: "form-control"
+      .form-group
+        .col-sm-offset-3.col-sm-9
+          =submit_tag '登录', class: "form-control btn btn-info"
+          .form-extr
+            还没申请?
+            %span
+              %a{href: enterprise_root_path}
+                去申请
+      %br
+      %br
+      %br
+      %br

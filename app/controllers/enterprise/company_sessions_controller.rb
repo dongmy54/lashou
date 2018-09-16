@@ -8,7 +8,7 @@ class Enterprise::CompanySessionsController < EnterprisesController
     @company = Company.find_by_name(params[:name])
     
     unless @company
-      flash[:warning] = t('common.not_exist', name: '公司')
+      flash.now[:warning] = t('common.not_exist', name: '公司')
       return render :new, layout: 'company_apply_login'
     end
 
