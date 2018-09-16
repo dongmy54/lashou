@@ -18,4 +18,10 @@ class EnterprisesController < ActionController::Base
     @account
   end
 
+  private
+
+    def require_account_login
+      redirect_to enterprise_account_login_path unless current_account
+    end
+
 end
