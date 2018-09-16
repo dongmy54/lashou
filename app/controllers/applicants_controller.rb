@@ -13,7 +13,8 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params)
     if @applicant.save
       flash[:notice] = '恭喜您注册成功'
-      redirect_to root_path
+      applicant_login
+      redirect_to applicant_path(@applicant)
     else
       flash.now[:warning] = @applicant.errors.messages
       render 'new'
@@ -37,6 +38,10 @@ class ApplicantsController < ApplicationController
       params.require(:applicant).permit(:address,:age,:avatar,:blog_address,
                                         :city, :education, :email, :mobile, :name,
                                         :password, :password_confirmation, :sex, :school)
+    end
+
+    def applicant_login
+      session[:applicant_id] = @applicant.id
     end
 
     def require_login
