@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get 'overview', to: 'main#overview'
 
     resources :companies, only: [:show,:create]
+    resources :jobs
   end
 
 
