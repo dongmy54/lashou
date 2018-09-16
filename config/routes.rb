@@ -15,10 +15,16 @@ Rails.application.routes.draw do
   namespace :enterprise do
     root 'companies#new'
 
-    get 'apply',          to: 'companies#new'
-    get 'company_login',  to: 'company_sessions#new'
-    post 'company_login', to: 'company_sessions#create'
-    delete 'exit',        to: 'company_sessions#destroy'
+    # 公司申请 登录相关
+    get 'apply',           to: 'companies#new'
+    get 'company_login',   to: 'company_sessions#new'
+    post 'company_login',  to: 'company_sessions#create'
+    delete 'company_exit', to: 'company_sessions#destroy'
+
+    # 公司后台 登录相关
+    get 'account_login',   to: 'account_sessions#new'
+    post 'account_login',  to: 'account_sessions#create'
+    delete 'account_exit', to: 'account_sessions#destroy'
 
     resources :companies, only: [:show,:create]
   end

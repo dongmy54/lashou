@@ -20,17 +20,17 @@
         #myNavbar.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a{:href => '#', style: "color: white;"}
+              %a{:href => enterprise_account_login_path, style: "color: white;"}
                 %span.glyphicon.glyphicon-home
                 后台登录
             - if current_company
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                  =image_tag( current_company.logo_url, class: 'company-logo')
+                  =image_tag(current_company.logo_url, class: 'company-logo')
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    =link_to '退出', enterprise_exit_path, method: :delete
+                    =link_to '退出', enterprise_company_exit_path, method: :delete
             - else
               %li
                 %a{:href => enterprise_apply_path, style: "color: white;"}
