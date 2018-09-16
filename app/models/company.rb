@@ -22,6 +22,7 @@
 
 # 公司
 class Company < ApplicationRecord
+  has_many   :accounts, dependent: :destroy
   belongs_to :industry
   
   mount_uploader :logo, LogoUploader

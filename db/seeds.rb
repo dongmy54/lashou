@@ -61,4 +61,14 @@ end
 puts '-------------行业、公司创建完成---------------'
 
 
+# 取一家公司 审核通过 创建account
+company = Company.first
+company.update!(:status => '审核通过')
+
+company.accounts.create!(name: '张三', password: '123456', is_main: true)  # 主账号
+company.accounts.create!(name: '王五', password: '123456', is_main: false)
+
+puts '------------- account 创建完成--------------'
+
+
 
