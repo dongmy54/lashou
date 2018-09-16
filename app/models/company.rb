@@ -22,6 +22,8 @@
 # 公司
 class Company < ApplicationRecord
   belongs_to :industry
+  
+  mount_uploader :logo, LogoUploader
 
   has_secure_password
 

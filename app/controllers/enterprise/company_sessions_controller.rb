@@ -9,7 +9,7 @@ class Enterprise::CompanySessionsController < EnterprisesController
     
     unless @company
       flash[:warning] = t('common.not_exist', name: '公司')
-      return redirect_to enterprise_root_path
+      return render :new, layout: 'company_apply_login'
     end
 
     if @company.authenticate(params[:password])

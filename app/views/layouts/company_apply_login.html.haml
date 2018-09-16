@@ -21,7 +21,7 @@
           %ul.nav.navbar-nav.navbar-right
             %li
               %a{:href => enterprise_root_path} 企业版
-            - if false
+            - if false #current_company
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                   =t("welcome_you", name: current_applicant_name)
