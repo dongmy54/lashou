@@ -19,4 +19,13 @@ module ApplicationHelper
     # 让字符串中 p 标签正常显示
     sanitize content, tags: %w(p) 
   end
+
+  def publish_time_desc(created_at)
+    time_desc = distance_of_time_in_words(Time.now, created_at)
+    if time_desc.end_with?('天')
+      time_desc + '前发布'
+    else
+      time_desc + '前'
+    end
+  end
 end

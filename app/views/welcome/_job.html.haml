@@ -1,0 +1,24 @@
+.col-md-4
+  .col-md-12.job-thumb-item
+    .job-thumb-top
+      .job-thumb-title
+        %a{href: '#'} 
+          =job.name[0,10] # 太长影响样式
+        %span.job-thumb-create-time 
+          ="[#{publish_time_desc(job.created_at)}]"
+        %span.pull-right.job-thumb-salary 
+          ="#{job.start_salary}k-#{job.end_salary}k"
+      .job-thumb-experience-education
+        ="经验#{job.worker_experience} / #{job.education}"
+      .job-thumb-desc
+        %span.word-cut 
+          =job.job_desc
+    .job-thumb-bottom
+      %a.fl{href: '#'}
+        =image_tag job.company.logo_url, class: 'job-thumb-company-pic'
+      .job-thumb-company-info
+        .job-thumb-company-name
+          %a{href: '#'}
+            =job.company.name
+        .job-thumb-company-content
+          ="#{job.company.industry.name} #{job.company.scale} #{job.company.city}"
