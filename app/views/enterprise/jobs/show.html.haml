@@ -1,0 +1,81 @@
+.row
+  .col-12
+    .card
+      .card-body
+        .e-content-item
+          %span.e-content-title
+            职位名称:
+          %span.e-content-info
+            =@job.name
+        .e-content-item
+          %span.e-content-title
+            职位类型:
+          %span.e-content-info
+            =@job.worker_type
+        .e-content-item
+          %span.e-content-title
+            学历要求:
+          %span.e-content-info
+            =@job.education
+        .e-content-item
+          %span.e-content-title
+            工作经验:
+          %span.e-content-info
+            =@job.worker_experience
+        .e-content-item
+          %span.e-content-title
+            薪资范围:
+          %span.e-content-info
+            ="#{@job.start_salary}k ~ #{@job.end_salary}k"
+        .e-content-item
+          %span.e-content-title
+            工作描述:
+          %span.e-content-info
+            =@job.job_desc
+        .e-content-item
+          %span.e-content-title
+            发布时间:
+          %span.e-content-info
+            =@job.created_at.strftime("%F %T")
+        =link_to '编辑职位', edit_enterprise_job_path(@job), class: 'btn btn-success'
+
+
+
+
+
+        / .profile
+        /   .col-md-4.col-md-offset-4
+        /     .profile-content
+        /       .text-center
+        /         .row
+        /           .col-lg-12.col-md-12.col-sm-12
+        /             .service-heading-block
+        /               %h3.text-center.text-primary.title 公司审核概览
+        /         .resume-divide-line{style: "padding-bottom: 0"}
+        /         .company-content{style: 'margin: 20px 20px;'}
+        /           .company-content-item
+        /             %span.company-content-title
+        /               公司名称:
+        /             %span.company-content-info
+        /               sadf
+        /           .company-content-item
+        /             %span.company-content-title
+        /               公司规模:
+        /             %span.company-content-info
+        /               daf
+        /           .company-content-item
+        /             %span.company-content-title
+        /               所属行业:
+        /             %span.company-content-info
+        /               sadflasdf
+        /           .company-content-item
+        /             %span.company-content-title
+        /               审核状态:
+        /             %span.company-content-info
+        /               adfsdalf
+        /           .company-content-item
+        /             %span.company-content-title
+        /               审核信息:
+        /             %span.company-content-info
+        /               sadfhlasdf
+

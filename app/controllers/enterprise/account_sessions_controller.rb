@@ -23,6 +23,9 @@ class Enterprise::AccountSessionsController < EnterprisesController
   end
 
   def destroy
+    session[:account_id], session[:company_id] = nil, nil
+    flash[:notice] = '成功退出企业管理后台'
+    redirect_to root_path
   end
 
   private

@@ -10,7 +10,8 @@
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
     %title Xtreme Admin Template - The Ultimate Multipurpose admin template
-
+    
+    =csrf_meta_tags
     =stylesheet_link_tag    'company', media: "all", 'data-turbolinks-track': 'reload'
     =javascript_include_tag 'company', 'data-turbolinks-track': 'reload'
   %body
@@ -73,7 +74,7 @@
                   %a.dropdown-item{:href => "javascript:void(0)"}
                     %i.ti-user.m-r-5.m-l-5
                     个人信息
-                  %a.dropdown-item{:href => "javascript:void(0)"}
+                  =link_to enterprise_account_exit_path, method: :delete, class: 'dropdown-item' do
                     %i.ti-wallet.m-r-5.m-l-5
                     退出
                   %a.dropdown-item{:href => "javascript:void(0)"}
@@ -99,17 +100,17 @@
                 / User Profile
                 .user-profile.d-flex.no-block.dropdown.m-t-20
                   .user-pic
-                    =image_tag(@company.logo_url, class: 'rounded-circle', style: "width: 40px;")
+                    =image_tag(current_company.logo_url, class: 'rounded-circle', style: "width: 40px;")
                   .user-content.hide-menu.m-l-10
                     %a#Userdd{"aria-expanded" => "false", "aria-haspopup" => "true", :href => "javascript:void(0)", :role => "button"}
                       %h5.m-b-0.user-name.font-medium
-                        =@company.name
+                        =current_company.name
                         %i.fa.fa-angle-down
                       %span.op-5.user-email
-                        =@company.industry.name
+                        =current_company.industry.name
                 / End User Profile
               %li.p-15.m-t-10
-                %a.btn.btn-block.create-btn.text-white.no-block.d-flex.align-items-center{:href => "javascript:void(0)"}
+                %a.btn.btn-block.create-btn.text-white.no-block.d-flex.align-items-center{:href => new_enterprise_job_path}
                   %i.fa.fa-plus-square
                   %span.hide-menu.m-l-5 发布职位
               / User Profile
@@ -156,12 +157,13 @@
         .page-breadcrumb
           .row.align-items-center
             .col-5
-              %h4.page-title 企业管理后台
+              %h4.page-title 
+                =@page_title || '企业管理后台'
             / .col-7
             /   .text-right.upgrade-btn
             /     %a.btn.btn-danger.text-white{:href => "https://wrappixel.com/templates/xtremeadmin/", :target => "_blank"} Upgrade to Pro
         .container-fluid
-          待完成内容
+          =render 'common/flash'
           =yield
 
 

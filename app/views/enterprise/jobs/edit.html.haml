@@ -1,0 +1,11 @@
+.row
+  .col-12
+    .card
+      .card-body
+        =form_for [:enterprise, @job], html: {class: "form-horizontal form-material"} do |f|
+          =render template: 'enterprise/jobs/_job_form', locals: {f: f}
+        %br/
+        %br/
+        %br/
+        %br/
+        %br/

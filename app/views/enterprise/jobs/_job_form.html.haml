@@ -1,0 +1,25 @@
+.row
+  .col-md-12
+    .form-group
+      =f.label :name, '工作名称', class: 'control-label col-sm-12'
+      =f.text_field :name, class: 'form-control col-sm-12'
+    .form-group
+      =f.label :worker_type, '工作类型', class: 'control-label col-sm-12'
+      =f.select :worker_type, Job::WorkerType.map{|i| [i,i]}, {}, class: 'form-control col-sm-12'
+    .form-group
+      =f.label :education, '学历要求', class: 'control-label col-sm-12'
+      =f.select :education, Job::Education.map{|i| [i,i]}, {}, class: 'form-control col-sm-12'
+    .form-group
+      =f.label :worker_experience, '工作经验', class: 'control-label col-sm-12'
+      =f.select :worker_experience, Job::WorkerExperience.map{|i| [i,i]}, {}, class: 'form-control col-sm-12'
+    .form-group
+      %label.control-label.col-sm-12 薪资范围
+      =f.number_field :start_salary, class: 'form-control col-sm-5', style: "display: inline"
+      %span.col-sm-2 ~
+      =f.number_field :end_salary, class: 'form-control col-sm-5', style: "display: inline"
+      %span K
+    .form-group
+      =f.label :job_desc, '工作描述', class: 'control-label col-sm-12'
+      =f.text_area :job_desc, rows: 8, class: 'form-control col-sm-12'
+    .from-group
+      =f.submit '发布职位', class: 'btn btn-success'
