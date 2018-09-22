@@ -1,6 +1,5 @@
 .search-area {
-  height: 300px;
-  background: #eccdb3;
+  height: 150px;
 }
 
 .type-pic-area {
@@ -13,6 +12,25 @@
   background: #a1e8e4;
   margin: 26px auto 0;
 }
+
+/*-----------------搜索框 开始-------------------*/
+.job-search {
+  margin-top: 30px;
+}
+
+.job-search input:focus {
+  border-color: #23c8b2;
+}
+
+.job-search-btn {
+  width: 80px;
+  height: 46px;
+  font-size: 18px;
+  color: #FFF;
+  border: 0;
+  background: #23c8b2;
+}
+/*-----------------搜索框 结束-------------------*/
 
 /*------------------职位缩略开始--------------------*/
 .job-thumb-item {

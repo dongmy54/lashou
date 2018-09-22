@@ -1,0 +1,6 @@
+.col-md-8.col-md-offset-2
+  =form_tag search_job_path, method: :get, class: '' do
+    .input-group.input-group-lg.job-search
+      =text_field_tag :search, params[:search], placeholder: '搜索职位或公司地点', class: 'form-control'
+      .input-group-btn
+        =submit_tag '搜索', class: 'btn job-search-btn'
