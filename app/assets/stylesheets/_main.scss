@@ -39,3 +39,26 @@ a {
   color: #ffffff; 
   border: 1px solid #ddd;
 }
+
+/*============= 回到顶部 =================*/
+.back-to-top {
+  background: none;
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 50px;
+  height: 60px;
+  z-index: 100;
+  text-decoration: none;
+  color: #23c8b2;
+  background-color: #dcdcdc;
+  opacity:0.5;
+  font-size: 30px;
+  font-weight: 800;
+  border-radius: 80%;
+
+  &:hover {
+    background-color: #23c8b2;
+    color: #fff;
+  }
+}

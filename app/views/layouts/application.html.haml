@@ -13,4 +13,32 @@
     .container-fluid
       =render "common/flash"
       =yield
+    / 回到顶部
+    %a#kp{href: '#', class: "back-to-top text-center"}
+      %i.glyphicon.glyphicon-menu-up
     =render "common/footer"
+
+
+// 向上滑动
+:javascript
+  // 默认隐藏
+  $("#kp").hide();
+
+  $(document).scroll(function() {
+    if ($(document).scrollTop() > 0) {
+      $("#kp").show();
+    }
+
+    if ($(document).scrollTop() == 0) {
+      $("#kp").hide();
+    }
+  });
+
+  $("#kp").click(function(){
+    var speed=500;
+    //滑动的速度
+    $('body,html').animate({ scrollTop: 0 }, speed);
+    return false;
+  });
+
+
