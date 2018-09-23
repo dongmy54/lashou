@@ -24,7 +24,10 @@
 class Company < ApplicationRecord
   has_many   :accounts, dependent: :destroy
   has_many   :jobs    , dependent: :destroy
+  # 收到投递
+  has_many   :receive_delivers, through: :jobs, source: :deliver_records
   belongs_to :industry
+
   
   mount_uploader :logo, LogoUploader
 

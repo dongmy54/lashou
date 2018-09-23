@@ -21,6 +21,9 @@
 
 class Job < ApplicationRecord
   belongs_to :company
+  has_many   :deliver_records
+  # 收到简历
+  has_many   :receive_resumes, through: :deliver_records, source: :resume
 
   # 类型
   WorkerType       = %w(全职 兼职).freeze

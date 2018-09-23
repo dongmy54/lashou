@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180916141303) do
+ActiveRecord::Schema.define(version: 20180923100915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 20180916141303) do
     t.string "status", default: "待审核"
     t.string "audit_comment"
     t.index ["industry_id"], name: "index_companies_on_industry_id"
+  end
+
+  create_table "deliver_records", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "resume_id"
+    t.string "state"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "industries", force: :cascade do |t|

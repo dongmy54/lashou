@@ -12,7 +12,7 @@
 # 行业
 class Industry < ApplicationRecord
   has_many :companies, dependent: :destroy
-
+  has_many :jobs, through: :companies
   # 类型
   Type = %w(
     农、林、牧、渔业

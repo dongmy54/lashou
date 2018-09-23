@@ -18,6 +18,9 @@
 # 简历
 class Resume < ApplicationRecord
   belongs_to :applicant
+  has_many   :deliver_records
+  # 投递职位
+  has_many   :deliver_jobs, through: :deliver_records, source: :job
 
   validates_presence_of :apply_reason, :brief_intro, :career_experience, :life_creed, 
                         :project_experience, :special_skill, :title, :applicant_id
