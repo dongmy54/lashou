@@ -1,3 +1,171 @@
-// Place all the styles related to the jobs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*------------ 职位详情页 上半部分 start -----------*/
+
+.job-page-top {
+  margin: -20px -15px 0 -15px;
+  padding-top: 30px;
+  height: 280px;
+  background: #f2f5f4;
+}
+
+.job-page-top-company {
+  font-size: 14px;
+  color: #555;
+  font-weight: 300;
+  margin-left: 3px;
+  margin-bottom: 8px;
+}
+
+.job-page-top-title {
+  height: 36px;
+  font-size: 36px;
+  color: #333;
+  line-height: 36px;
+  margin-bottom: 15px;
+}
+
+.job-page-top-so-on {
+  margin-top: 2px;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #555;
+  font-weight: 320;
+}
+
+.job-page-salary {
+  color: #fd5f39;
+  margin-right: 3px;
+}
+
+.job-page-top-industry-tag {
+  padding: 4px 10px;
+  line-height: 22px;
+  background-color: #fff;
+  color: #70797b;
+  font-size: 12px;
+  font-weight: 300;
+  border-radius: 10px;
+}
+
+.job-page-top-public-time {
+  padding-top: 10px;
+  font-size: 14px;
+  color: #999;
+  font-weight: 300;
+}
+
+.job-page-btn-area {
+  margin-top: 10px;
+}
+
+.btn-deliver-resume {
+  margin-left: 17px;
+  padding: 0 25px;
+  border: 1px solid #00b38a;
+  border-radius: 3px;
+  height: 44px;
+  line-height: 44px;
+  font-size: 18px;
+  background-color: rgb(35, 200, 178);
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #a1e8e4;
+    color: #3f3864;
+    border: 1px solid #a1e8e4;
+  }
+}
+
+.btn-collection {
+  margin-left: 17px;
+  padding: 0 10px;
+  border: 1px solid #00b38a;
+  border-radius: 3px;
+  height: 44px;
+  line-height: 44px;
+  font-size: 18px;
+  background-color: #f2f5f4;
+  color: #00b38a;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #a1e8e4;
+    color: #3f3864;
+    border: 1px solid #a1e8e4;
+  }
+}
+/*------------ 职位详情页 上半部分 end -----------*/
+
+
+
+/*------------ 职位详情页 下半部分 start ---------*/
+.job-page-bottom {
+  margin: 0 -15px;
+  padding-top: 30px;
+  background: #fff;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.job-page-desc-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  line-height: 16px;
+  margin-bottom: 22px;
+  margin-top: 5px;
+}
+
+.job-page-desc-content p {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 300;
+}
+
+.job-page-company {
+  padding-left: 30px;
+  border-left: 5px solid #f2f5f4;
+}
+
+.job-page-company-name span{
+  vertical-align: bottom;
+  margin-left: 21px;
+  margin-bottom: 0;
+  font-size: 18px;
+  line-height: 18px;
+  color: #555;
+  font-weight: 300;
+}
+
+.job-page-company-pic {
+  weight: 100px;
+  height: 100px;
+}
+
+.job-page-company-info {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #555;
+  font-weight: 300; 
+}
+
+.job-page-company-desc {
+  margin: 0 0 0 10px;
+}
+
+.job-page-company-info-item {
+  margin-bottom: 20px;
+}
+
+.company-main-page {
+  text-decoration:none;
+  color: #555;
+}
+
+.clear-float {
+  clear: both;
+}
+
+
+
+/*------------ 职位详情页 下半部分 end -----------*/

@@ -20,6 +20,7 @@ module ApplicationHelper
     sanitize content, tags: %w(p) 
   end
 
+  # 职位发布时间 描述
   def publish_time_desc(created_at)
     time_desc = distance_of_time_in_words(Time.now, created_at)
     if time_desc.end_with?('天')
@@ -28,4 +29,10 @@ module ApplicationHelper
       time_desc + '前'
     end
   end
+
+  # 输入 断句
+  def content_split_sentence(content)
+    content.split("\n")
+  end
+
 end

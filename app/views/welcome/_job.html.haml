@@ -2,7 +2,7 @@
   .col-md-12.job-thumb-item
     .job-thumb-top
       .job-thumb-title
-        %a{href: '#'} 
+        %a{href: job_path(job)} 
           =job.name[0,10] # 太长影响样式
         %span.job-thumb-create-time 
           ="[#{publish_time_desc(job.created_at)}]"

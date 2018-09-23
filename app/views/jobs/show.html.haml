@@ -1,0 +1,65 @@
+=stylesheet_link_tag 'jobs'
+
+.job-page-top
+  .col-md-8.col-md-offset-2
+    .job-page-top-company
+      ="#{@job.company.name}招聘"
+    .row
+      .col-md-8
+        .job-page-top-title
+          =@job.name
+        .job-page-top-so-on
+          %span.job-page-salary
+            ="#{@job.start_salary}k-#{@job.end_salary}k"
+          ="/#{@job.company.city} / 经验#{@job.worker_experience} / #{@job.education} / #{@job.worker_type}"
+        .industry-tag
+          %span.job-page-top-industry-tag
+            ="#{@job.company.industry.name}"
+        .job-page-top-public-time
+          ="#{publish_time_desc(@job.created_at)} 于拉手网"
+      .col-md-4
+        .job-page-btn-area
+          %a.btn.btn-collection
+            %span.glyphicon.glyphicon-star-empty 收藏
+          %a.btn.btn-deliver-resume 投个简历
+.job-page-bottom
+  .col-md-8.col-md-offset-2
+    .row
+      .col-md-8
+        .job-page-desc-title
+          职位描述:
+        .job-page-desc-content
+          -content_split_sentence(@job.job_desc).each do |sentence|
+            %p 
+              =sentence
+      .col-md-4.job-page-company
+        -company = @job.company
+        .job-page-company-name
+          %a{href: '#'}
+            =image_tag company.logo_url, class: 'job-page-company-pic'
+          %span
+            =company.name
+        .job-page-company-info
+          .job-page-company-info-item
+            .glyphicon.glyphicon-th
+            %span.job-page-company-desc
+              =company.industry.name
+          .job-page-company-info-item
+            .glyphicon.glyphicon-user
+            %span.job-page-company-desc
+              =company.scale
+          .job-page-company-info-item
+            .glyphicon.glyphicon-map-marker
+            %span.job-page-company-desc
+              =company.city
+          .job-page-company-info-item
+            .glyphicon.glyphicon-home
+            %span.job-page-company-desc
+              %a.company-main-page{href: 'https://www.baidu.com'} 
+                https://www.baidu.com
+.clear-float
+
+
+
+
+

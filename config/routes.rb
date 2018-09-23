@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'search_job', to: 'jobs#search'
+
   get 'register',   to: 'applicants#new'
   get 'login',      to: 'applicant_sessions#new'
   post 'login',     to: 'applicant_sessions#create'
   delete 'exit',    to: 'applicant_sessions#destroy'
+
+  resources :jobs, only: [:show]
 
   resources :applicants do
     resources :resumes
