@@ -14,7 +14,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    '默认logo.jpeg'
+    '公司logo.jpg'
   end
 
   def extension_whitelist

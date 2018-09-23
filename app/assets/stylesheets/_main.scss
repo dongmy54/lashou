@@ -18,3 +18,24 @@ body {
   float: left;
 }
 
+a {
+  text-decoration: none;
+}
+
+/*===========弹性 左右布局==============*/
+.flex-left-right{
+  display: flex;
+  justify-content: space-between;
+}
+
+/*============= 分页 ===================*/
+.pagination >li >a { 
+  border-radius: 50% !important;
+  margin: 0 5px; color: rgb(63, 56, 100);
+} 
+
+.pagination > .active >a:hover, .pagination .active a { 
+  background-color: #23c8b2;
+  color: #ffffff; 
+  border: 1px solid #ddd;
+}

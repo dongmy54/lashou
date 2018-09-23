@@ -66,7 +66,7 @@ Industry::Type.each do |type|
     end
 
     company = industry.companies.create!(
-      :city            => Faker::Address.city,
+      :city            => SeedCity.sample,
       :desc            => '我们是一家积极阳光的公司,工作氛围轻松。',
       :name            =>  name,
       :password        => '123456', 

@@ -1,0 +1,29 @@
+.col-md-8.col-md-offset-2
+  .search-job-item
+    .panel.panel-default
+      .panel-body
+        .col-md-6
+          .search-job-head
+            %a{href: '#'} 
+              /.网页/APP 设计师（UI、UE）[新鸿路]
+              =job_item.name
+            %span.search-format-time
+              =publish_time_desc(job_item.created_at)
+          .search-job-center
+            %span.salery-format
+              ="#{job_item.start_salary}K-#{job_item.end_salary}K"
+            ="经验#{job_item.worker_experience} / #{job_item.education}"
+        .col-md-6
+          .flex-left-right
+            .left-cotnent
+              .search-job-head
+                %a{href: '#'} 
+                  =job_item.company.name
+              .search-job-center
+                ="#{job_item.company.industry.name} / 未融资 / #{job_item.company.scale}"
+            .right-content
+              %a{href: '#'}
+                =image_tag job_item.company.logo_url, class: 'job-thumb-company-pic pull-right'
+      .panel-footer 
+        %span.pull-right “双休无加班,六险一金”
+.col-md-2

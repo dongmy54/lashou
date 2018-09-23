@@ -1,0 +1,80 @@
+/*------------------- 职位搜索 开始 ----------------*/
+.search-job-area {
+  margin: 0 -15px;
+  background: #fff;
+  min-height: 400px;
+}
+
+.search-job-item {
+  margin: 26px 0;
+}
+
+.panel-body {
+  min-height: 68px;
+  padding: 14px 15px 0;
+}
+
+.panel-footer {
+  background-color: #fafafa;
+  min-height: 40px;
+}
+
+.search-job-head a{
+  display: inline-block;
+  font-weight: 350;
+  max-width: 272px;
+  margin: 0;
+  font-size: 16px;
+  color: #00b38a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  text-decoration: none;
+}
+
+.search-format-time {
+  display: inline-block;
+  margin: 0 5px;
+  color: #999;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+.search-job-center {
+  font-weight: 320;
+  display: block;
+  font-size: 14px;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  margin-bottom: 15px;
+}
+
+.salery-format {
+  margin-right: 1em;
+  font-size: 16px;
+  color: #fd5f39;
+  font-weight: 350;
+}
+/*------------------- 职位搜索 开始 ----------------*/
+
+/*---------------------- 分页区域 ------------------*/
+.pagination-area {
+  clear: both; 
+  height: 150px;
+  text-align: center;
+}
+
+.not-find-job {
+  font-size: 26px;
+  font-weight: 300;
+  padding-top: 20px;
+}
+
+
+
+
+

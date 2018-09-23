@@ -23,7 +23,7 @@ class Job < ApplicationRecord
   belongs_to :company
 
   # 类型
-  WorkerType             = %w(全职 兼职).freeze
+  WorkerType       = %w(全职 兼职).freeze
   # 学历
   Education        = %w(小学 初中 高中 专科 本科 硕士以上).freeze
   # 经验
@@ -40,4 +40,46 @@ class Job < ApplicationRecord
   validates_inclusion_of :worker_type,       in: WorkerType
   validates_inclusion_of :education,         in: Education
   validates_inclusion_of :worker_experience, in: WorkerExperience
+
+
+  # search_name 检索名（城市/职位名)
+  # current_page 当前页
+  def self.search(search_name, current_page=1)
+    current_page = current_page_cal(current_page)
+    offset_num   = (current_page - 1) * 10 # 每页 10
+
+    # 城市
+    if is_city?(search_name) && company_ids(search_name).present?
+      c_ids = company_ids(search_name)
+      count = Job.where(company_id: c_ids).count
+
+      jobs  = Job.includes(company: :industry).where(company_id: c_ids).offset(offset_num).limit(10) if count > 0
+      jobs ||=  Job.none  # 空关系
+    else
+      count = Job.where('name like ?', "%#{search_name}%").count
+
+      jobs  = Job.includes(company: :industry).where('name like ?', "%#{search_name}%").limit(10) if count > 0
+      jobs ||=  Job.none  # 空关系
+    end
+    
+    total_page = (count / 10) + (count % 10 == 0 ? 0 : 1)
+    [jobs, current_page, total_page]
+  end
+
+  # 偏移量
+  def self.current_page_cal(current_page)
+    current_page = current_page.to_i <= 1 ? 1 : current_page.to_i
+  end
+
+  def self.is_city?(city)
+    SeedCity.include?(city)
+  end
+
+  # 城市-公司id数组
+  def self.company_ids(city)
+    Company.where(:city => city).ids
+  end
+
+
+
 end
