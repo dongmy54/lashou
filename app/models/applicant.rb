@@ -24,6 +24,9 @@ class Applicant < ApplicationRecord
   has_many :resumes, dependent: :destroy
   # 发送投递
   has_many :send_delivers, through: :resumes, source: :deliver_records
+  has_many :collections
+  # 收藏工作
+  has_many :collection_jobs, through: :collections, source: :job
 
   mount_uploader :avatar, AvatarUploader
   has_secure_password
