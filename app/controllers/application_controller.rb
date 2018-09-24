@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_applicant
   helper_method :applicant_is_login?
   helper_method :has_deliver?
+  helper_method :has_collection?
 
   # 当前求职者
   def current_applicant
@@ -23,6 +24,11 @@ class ApplicationController < ActionController::Base
     current_applicant.send_delivers.where(job_id: job_id).present?
   end
 
+  # 是否 已收藏
+  def has_collection?(job_id)
+    current_applicant.collections.pluck(:job_id).include?(job_id)
+  end
+  
   private
 
 end

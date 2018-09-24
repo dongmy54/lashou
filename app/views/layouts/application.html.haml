@@ -11,7 +11,8 @@
   %body
     =render "common/header"
     .container-fluid
-      =render "common/flash"
+      #flash-location
+        =render "common/flash"
       =yield
     / 回到顶部
     %a#kp{href: '#', class: "back-to-top text-center"}

@@ -34,6 +34,34 @@ class ApplicantsController < ApplicationController
 
   # 添加收藏
   def add_collection
+    result = {success: true}
+
+    # 登录
+    unless applicant_is_login?
+      result[:success]    = false
+      result[:err_reason] = 'not_login'
+      result[:err_desc]   = '亲,你还没登录呢!'
+    end
+
+    # 收藏
+    if result[:success] && has_collection?(params[:job_id])
+      result[:success]    = false
+      result[:err_reason] = 'has_collection'
+      result[:err_desc]   = '亲,该职位你已添加过收藏'
+    end
+
+    if result[:success]
+      collection = Collection.new(applicant_id: current_applicant.id, 
+                                  job_id: params[:job_id])
+      
+      unless collection.save
+        result[:success]    = false
+        result[:err_reason] = 'other'
+        result[:err_desc]   = collection.errors.messages 
+      end
+    end
+
+    render json: result
   end
 
   # 取消收藏
@@ -59,4 +87,5 @@ class ApplicantsController < ApplicationController
     def require_login
       redirect_to root_path unless current_applicant
     end
+
 end

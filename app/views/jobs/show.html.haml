@@ -19,8 +19,12 @@
           ="#{publish_time_desc(@job.created_at)} 于拉手网"
       .col-md-4
         .job-page-btn-area
-          %a.btn.btn-collection
-            %span.glyphicon.glyphicon-star-empty 收藏
+          -if applicant_is_login? && has_collection?(@job.id)
+            %a.btn.btn-collection#cancel_collection
+              %span.glyphicon.glyphicon-star-empty 取消
+          -else
+            %a.btn.btn-collection#add_collection
+              %span.glyphicon.glyphicon-star-empty 收藏
           -if applicant_is_login? && has_deliver?(@job.id)
             %a#deliver-resume.btn.btn-deliver-resume.disabled
               已投递
@@ -70,6 +74,7 @@
 :javascript
   var isLogin = #{applicant_is_login?};
 
+  //======================================= 投递部分 =======================
   // 点击 投递 先做ajax验证
   $("#deliver-resume").click(function() {
     var url = "#{valid_before_deliver_path}";
@@ -120,4 +125,55 @@
   $(".btn-resume-confirm").click(function() {
     $("#resume-select-form").submit();
   })
-   
+  
+
+  // ========================================收藏部分==============================
+  $("#add_collection").click(function() {
+    job_id = #{@job.id};
+    console.log(job_id);
+    data = {"job_id": job_id};
+    console.log(data); 
+
+    $.ajax({
+      url:  '/add_collection',
+      type: 'POST',
+      data: data,
+      success: function(data) {
+        if (data['success']) {
+          swith_add_cancel_collection_btn();
+          add_ajax_desc('success', '已成功添加收藏');
+        } else { 
+          add_ajax_desc('warning', data['err_desc']);
+        }
+      }
+    })
+  })
+
+  // 添加 ajax 描述
+  function add_ajax_desc(class_name, desc_content) {
+    content  = '<div class="alert alert-dismissible alert-' + class_name + '"'+ '>';
+    content += '<button aria-label="Close" class="close" data-dismiss="alert">×</button>';
+    content += desc_content;
+    content += '</div>';
+
+    $("#flash-location").html(content);
+  }
+
+  // 切换收藏按钮
+  function swith_add_cancel_collection_btn() {
+    current_id = $(".btn-collection").attr('id');
+
+    if (current_id === 'add_collection') {
+      $(".btn-collection").attr('id', 'cancel_collection');
+      $(".glyphicon-star-empty").html('取消');
+    } else {
+      $(".btn-collection").attr('id', 'add_collection');
+      $(".glyphicon-star-empty").html('收藏');
+    }
+  }
+
+
+
+
+
+
