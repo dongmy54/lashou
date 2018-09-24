@@ -59,22 +59,9 @@
               %a.company-main-page{href: 'https://www.baidu.com'} 
                 https://www.baidu.com
 
-
 / 简历选择模态框
-#my-resumes.modal.fade{:role => "dialog"}
-  .modal-dialog
-    / Modal content
-    .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title.select-resume-title 选择简历
-      .modal-body
-        =form_tag deliver_resume_path, id: "resume-select-form" do
-          =hidden_field_tag :job_id, @job.id
-          %select#resume_id.form-control{name: 'resume_id'}
-      .modal-footer
-        %button.btn.btn-resume-confirm{"data-dismiss" => "modal", :type => "button"} 确认
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} 取消
+=render 'resume_select_modal'
+
 
 :javascript
   var isLogin = #{applicant_is_login?};

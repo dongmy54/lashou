@@ -35,9 +35,4 @@ module ApplicationHelper
     content.split("\n")
   end
 
-  # 创建 简历选项 html
-  def generate_resume_select_html(resume_arrs)
-    select_tag :resume_id, options_for_select(resume_arrs), class: "form-control"
-  end
-
 end
