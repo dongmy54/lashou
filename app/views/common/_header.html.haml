@@ -1,3 +1,11 @@
+%style
+  :plain
+    .hu {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+    }
+
 %nav.navbar.navbar-default
   .container-fluid
     .navbar-header
@@ -14,7 +22,8 @@
         - if current_applicant
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              =t("welcome_you", name: current_applicant_name)
+              /=t("welcome_you", name: current_applicant_name)
+              =image_tag current_applicant.avatar_url, class: 'hu'
               %span.caret
             %ul.dropdown-menu
               %li
