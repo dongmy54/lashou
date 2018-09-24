@@ -65,7 +65,33 @@ class ApplicantsController < ApplicationController
   end
 
   # 取消收藏
-  def cancle_collection
+  def cancel_collection
+    result = {success: true}
+
+    # 登录
+    unless applicant_is_login?
+      result[:success]    = false
+      result[:err_reason] = 'not_login'
+      result[:err_desc]   = '亲,你还没登录呢!'
+    end
+
+    # 收藏
+    collection = current_applicant.collections.find_by_job_id(params[:job_id])
+    if result[:success] && collection.nil?
+      result[:success]    = false
+      result[:err_reason] = 'collection_not_exist'
+      result[:err_desc]   = '该笔收藏不存在'
+    end
+
+    if result[:success]
+      unless collection.destroy
+        result[:success]    = false
+        result[:err_reason] = 'other'
+        result[:err_desc]   = collection.errors.messages 
+      end
+    end
+
+    render json: result
   end
 
   # 我的投递箱

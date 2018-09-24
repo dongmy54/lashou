@@ -128,11 +128,12 @@
   
 
   // ========================================收藏部分==============================
-  $("#add_collection").click(function() {
+  // 添加收藏
+  // 对新增元素 没有事件 多一层过滤
+  $(".job-page-btn-area").on('click', '#add_collection', function() {
     job_id = #{@job.id};
     console.log(job_id);
     data = {"job_id": job_id};
-    console.log(data); 
 
     $.ajax({
       url:  '/add_collection',
@@ -142,6 +143,26 @@
         if (data['success']) {
           swith_add_cancel_collection_btn();
           add_ajax_desc('success', '已成功添加收藏');
+        } else { 
+          add_ajax_desc('warning', data['err_desc']);
+        }
+      }
+    })
+  })
+
+  // 取消收藏
+  $(".job-page-btn-area").on('click', '#cancel_collection', function() {
+    job_id = #{@job.id};
+    data = {"job_id": job_id};
+
+    $.ajax({
+      url:  '/cancel_collection',
+      type: 'POST',
+      data: data,
+      success: function(data) {
+        if (data['success']) {
+          swith_add_cancel_collection_btn();
+          add_ajax_desc('success', '已成功取消收藏');
         } else { 
           add_ajax_desc('warning', data['err_desc']);
         }

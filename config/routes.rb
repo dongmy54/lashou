@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'valid_before_deliver', to: 'deliver_records#valid_before_deliver'
 
   post 'add_collection',      to: 'applicants#add_collection'
-  post 'cancle_collection',   to: 'applicants#cancle_collection'
+  post 'cancel_collection',   to: 'applicants#cancel_collection'
   post 'deliver_resume',      to: 'deliver_records#create'
 
   get 'register',   to: 'applicants#new'
