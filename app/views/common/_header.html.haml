@@ -23,9 +23,17 @@
               %li
                 %a{:href => applicant_resumes_path(current_applicant)} 我的简历
               %li
-                %a{:href => my_deliver_path} 我的投递
+                %a{:href => my_deliver_path} 
+                  我的投递(
+                  %span.main-color-font
+                    =current_applicant.send_delivers.count
+                  )
               %li
-                %a{:href => "#"} 我的收藏
+                %a{:href => "#"} 
+                  我的收藏(
+                  %span.main-color-font
+                    =current_applicant.collections.count
+                  )
               %li.divider
               %li
                 =link_to '退出', exit_path, method: :delete
