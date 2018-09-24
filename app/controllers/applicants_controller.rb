@@ -1,5 +1,5 @@
 class ApplicantsController < ApplicationController
-  before_action :require_login, only: [:show, :update]
+  before_action :require_login, only: [:show, :update, :my_deliver]
 
   # 个人主页
   def show
@@ -32,6 +32,10 @@ class ApplicantsController < ApplicationController
     end
   end
 
+  # 我的投递箱
+  def my_deliver
+    @datas, @current_page, @total_page = current_applicant.deliver_data(params[:current_page])
+  end
 
   private
     def applicant_params

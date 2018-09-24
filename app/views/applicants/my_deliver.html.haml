@@ -1,0 +1,37 @@
+=stylesheet_link_tag 'deliver_records'
+=javascript_include_tag 'pagination.js'
+.container
+  .row.profile
+    .col-md-3
+      =render partial: 'common/profile_sidebar', locals: {applicant: current_applicant, status: 'e'}
+    .col-md-9
+      .profile-content
+        .text-center
+          .row
+            .col-lg-12.col-md-12.col-sm-12
+              .service-heading-block
+                %h2.text-center.text-primary.title 我的投递箱
+        .deliver-head
+          已投递简历状态
+        =render partial: 'deliver_item', collection: @datas
+        .pagination-area
+          -if 3 > 1
+            #pagination
+          -else 
+            .not-find-content
+              没有找到对应职位, 换个词试试
+      
+      
+:javascript
+  // 替换 分页内容脚步导航
+  $('#pagination').html(generate_pagination(#{@current_page},#{@total_page}));
+
+
+
+
+
+
+
+
+
+

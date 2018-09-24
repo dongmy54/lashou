@@ -1,0 +1,20 @@
+.deliver-content
+  .deliver-item
+    .deliver-company
+      =image_tag deliver_item.logo_url, class: 'deliver-company-pic'
+      %span.deliver-company-name
+        =deliver_item.company_name
+    .deliver-job
+      %a{href: '#'}
+        =deliver_item.job_name
+      .deliver-job-salary
+        ="#{deliver_item.start_salary}K-#{deliver_item.end_salary}K"
+    .deliver-resume
+      %a{href: '#'}
+        =deliver_item.resume_title
+    .deliver-state
+      =deliver_item.state
+    .deliver-comment
+      =deliver_item.comment
+    .deliver-time
+      =deliver_item.created_at.strftime("%F")

@@ -22,6 +22,11 @@ a {
   text-decoration: none;
 }
 
+.btn-r {
+  background-color: rgb(35, 200, 178);
+  border-color: rgb(35, 200, 178);
+}
+
 /*===========弹性 左右布局==============*/
 .flex-left-right{
   display: flex;
@@ -38,6 +43,18 @@ a {
   background-color: #23c8b2;
   color: #ffffff; 
   border: 1px solid #ddd;
+}
+
+.pagination-area {
+  clear: both; 
+  height: 150px;
+  text-align: center;
+}
+
+.not-find-content {
+  font-size: 26px;
+  font-weight: 300;
+  padding-top: 20px;
 }
 
 /*============= 回到顶部 =================*/

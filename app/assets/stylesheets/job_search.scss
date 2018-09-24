@@ -39,6 +39,7 @@
   color: #999;
   font-size: 14px;
   line-height: 25px;
+  vertical-align: bottom;
 }
 
 .search-job-center {
@@ -59,20 +60,7 @@
   color: #fd5f39;
   font-weight: 350;
 }
-/*------------------- 职位搜索 开始 ----------------*/
-
-/*---------------------- 分页区域 ------------------*/
-.pagination-area {
-  clear: both; 
-  height: 150px;
-  text-align: center;
-}
-
-.not-find-job {
-  font-size: 26px;
-  font-weight: 300;
-  padding-top: 20px;
-}
+/*------------------- 职位搜索 结束 ----------------*/
 
 
 

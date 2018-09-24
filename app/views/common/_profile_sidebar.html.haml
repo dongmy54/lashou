@@ -1,25 +1,18 @@
 .profile-sidebar
-  / SIDEBAR USERPIC
   .profile-userpic
     -if applicant.avatar?
       =image_tag(applicant.avatar_url, class: 'img-responsive')
-      /-full_image = image_url(applicant.avatar_url)
     -else
       =image_tag('https://i.loli.net/2018/09/09/5b94a0bddf79a.jpeg', class: 'img-responsive')
-  / END SIDEBAR USERPIC
-  / SIDEBAR USER TITLE
   .profile-usertitle
     .profile-usertitle-name
       =applicant.name
     .profile-usertitle-job
       Developer
-  / END SIDEBAR USER TITLE
-  / SIDEBAR BUTTONS
   .profile-userbuttons
-    %button.btn.btn-success.btn-sm{:type => "button"} Follow
-    %button.btn.btn-danger.btn-sm{:type => "button"} Message
-  / END SIDEBAR BUTTONS
-  / SIDEBAR MENU
+    %button.btn.btn-success.btn-sm.btn-r{:type => "button"} Follow
+    %button.btn.btn-info.btn-sm{:type => "button"} Message
+  
   .profile-usermenu
     %ul.nav
       %li{class: status == 'p' ? 'active' : ''}
@@ -34,6 +27,10 @@
         %a{:href => applicant_resumes_path(applicant)}
           %i.glyphicon.glyphicon-th-list
           我的简历
+      %li{class: status == 'e' ? 'active' : ''}
+        %a{:href => my_deliver_path}
+          %i.glyphicon.glyphicon-envelope
+          我的投递
       %li.active{class: status == 'd' ? '' : 'hidden'}
         %a{href: (@resume && !@resume.new_record?) ? applicant_resume_path(applicant,@resume) : '#'}
           %i.glyphicon.glyphicon-bookmark
@@ -42,4 +39,5 @@
         %a{:href => '#'}
           %i.glyphicon.glyphicon-flag
             帮助
-  / END MENU
+ 
+

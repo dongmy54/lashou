@@ -58,5 +58,30 @@ class Applicant < ApplicationRecord
 
   validates :education, inclusion: {in: Education}, allow_blank: true
 
+  # 投递数据
+  def deliver_data(current_page)
+    current_page  = current_page.to_i < 1 ? 1 : current_page.to_i
+    offset_number = (current_page - 1) * 4 # 每页 4
+
+    sql = "select c.logo, c.name company_name, j.name job_name, j.start_salary, j.end_salary,
+                       r.title resume_title, dr.state, dr.comment, dr.created_at
+                from deliver_records dr
+                inner join jobs j on j.id = dr.job_id
+                inner join companies c on c.id = j.company_id
+                inner join resumes r on r.id = dr.resume_id
+                inner join applicants a on a.id = r.applicant_id
+                where a.id = ? limit 4 offset ?"
+
+    # 为了照顾 logo_url 方法用 company
+    datas       = Company.find_by_sql [sql, self.id, offset_number]
+    total_count = deliver_count
+    total_page  = (total_count / 4) + (total_count % 4 == 0 ? 0 : 1)
+
+    [datas, current_page, total_page]
+  end
+
+  def deliver_count
+    self.send_delivers.count
+  end
 
 end

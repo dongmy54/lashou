@@ -1,3 +1,99 @@
-// Place all the styles related to the deliver_records controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*----------- 我的投递 开始------------------*/
+.deliver-head {
+  background: #fafafa;
+  height: 50px;
+  border-bottom: 1px solid #ebebeb;
+  position: relative;
+  padding: 10px 0 10px 20px;
+  font-size: 26px;
+  color: #555;
+  font-weight: 300;
+  margin: 0 0 20px;
+}
+
+.deliver-content {
+  background: #fafafa;
+  color: #555;
+  font-size: 14px;
+  font-weight: 300;
+  border-left: 3px solid rgb(35, 200, 178);
+  padding-left: 20px;
+  min-height: 100px;
+  margin-bottom: 20px;
+}
+
+.deliver-item {
+  padding: 10px 0;
+  vertical-align: middle;
+}
+
+.deliver-company {
+  padding-right: 20px;
+  display: inline-block;
+}
+
+.deliver-company-name {
+  text-align: center;
+}
+
+.deliver-company-pic {
+  weight: 100px;
+  height: 100px;
+}
+
+.deliver-job {
+  padding-right: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.deliver-job a {
+  color: #555;
+  text-decoration: none;
+
+  &:hover {
+    color: rgb(35, 200, 178);
+  } 
+}
+
+.deliver-job-salary {
+  font-size: 16px;
+  color: #fa6041;
+}
+
+.deliver-resume {
+  padding-right: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.deliver-resume a {
+  color: #555;
+  text-decoration: none;
+
+  &:hover {
+    color: rgb(35, 200, 178);
+  }
+}
+
+.deliver-state {
+  padding-right: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  color: #337ab7;
+}
+
+.deliver-comment {
+  padding-right: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.deliver-time {
+  padding-right: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/*----------- 我的投递 开始------------------*/

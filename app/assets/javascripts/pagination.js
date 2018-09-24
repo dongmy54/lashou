@@ -45,7 +45,19 @@ function generate_next_page(current_page, last_page) {
 
 // 当前页面url
 function current_page_url() {
-  return window.location.href.split('current_page')[0];
+  url = window.location.href.split('current_page')[0];
+  
+  // 不包含 ？
+  if (url.indexOf("?") === -1) {
+    url += '?';
+  } 
+
+  // 最后一位 是否为 &
+  if (url.charAt(url.length - 1) != '&') {
+    url += '&'
+  };
+
+  return url;
 }
 
 function url_page_num(current_page, name) { 
