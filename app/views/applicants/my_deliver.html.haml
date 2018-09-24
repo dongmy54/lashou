@@ -17,7 +17,7 @@
         .pagination-area
           -if @total_page > 1
             #pagination
-          -else 
+          -elsif @total_page == 0 
             .not-find-content
               还没有投递，赶快去投一个吧！
       
