@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'
 
-  get 'search_job', to: 'jobs#search'
+  get 'search_job',      to: 'jobs#search'
+
+  get 'valid_before_deliver', to: 'deliver_records#valid_before_deliver'
+  post 'deliver_resume',      to: 'deliver_records#create'
 
   get 'register',   to: 'applicants#new'
   get 'login',      to: 'applicant_sessions#new'

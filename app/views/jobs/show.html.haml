@@ -21,7 +21,8 @@
         .job-page-btn-area
           %a.btn.btn-collection
             %span.glyphicon.glyphicon-star-empty 收藏
-          %a.btn.btn-deliver-resume 投个简历
+          %a#deliver-resume.btn.btn-deliver-resume
+            投个简历
 .job-page-bottom
   .col-md-8.col-md-offset-2
     .row
@@ -57,9 +58,75 @@
             %span.job-page-company-desc
               %a.company-main-page{href: 'https://www.baidu.com'} 
                 https://www.baidu.com
-.clear-float
 
 
+/ 简历选择模态框
+#my-resumes.modal.fade{:role => "dialog"}
+  .modal-dialog
+    / Modal content
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title.select-resume-title 选择简历
+      .modal-body
+        =form_tag deliver_resume_path, id: "resume-select-form" do
+          =hidden_field_tag :job_id, @job.id
+          %select#resume_id.form-control{name: 'resume_id'}
+      .modal-footer
+        %button.btn.btn-resume-confirm{"data-dismiss" => "modal", :type => "button"} 确认
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} 取消
 
+:javascript
+  var isLogin = #{applicant_is_login?};
 
+  // 点击 投递 先做ajax验证
+  $("#deliver-resume").click(function() {
+    var url = "#{valid_before_deliver_path}";
 
+    $.ajax({
+      type: "GET",
+      url:  url,
+      success: function(data) {
+        resume_arr = data['resumes'];
+        url        = data["url"];
+
+        if (url != undefined) {
+          redirect_to_url(url);
+        } else {
+          replace_resume_select(resume_arr);
+          $("#my-resumes").modal();
+        }
+      }
+    })
+  })
+
+  // 跳转 到 url
+  function redirect_to_url(url) {
+    window.location.href = url; 
+  }
+
+  // 替换简历选项标签
+  function replace_resume_select(resume_arr) {
+    content = generate_resume_select_html(resume_arr);
+
+    $("#resume_id").html(content);
+  }
+
+  //创建 简历选项 html
+  function generate_resume_select_html(resume_arr) {
+    content = '';
+
+    resume_arr.forEach(function(ele) {
+      content += "<option value=" + "'" + ele[1] + "'" + ">";
+      content += ele[0];
+      content += "</option>";
+    });
+
+    return content;
+  }
+
+  // 提交简历选择表单
+  $(".btn-resume-confirm").click(function() {
+    $("#resume-select-form").submit();
+  })
+   

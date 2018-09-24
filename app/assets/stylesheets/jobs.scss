@@ -166,6 +166,37 @@
   clear: both;
 }
 
-
-
 /*------------ 职位详情页 下半部分 end -----------*/
+
+
+/*------------ 职位详情页 选择简历 start -----------*/
+.modal {
+  text-align: center;
+}
+
+.modal:before {
+  display: inline-block;
+  vertical-align: middle;
+  content: " ";
+  height: 100%;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.select-resume-title {
+  text-align: center;
+  color: #3f3864;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.btn-resume-confirm {
+  color: #fff;
+  background-color: rgb(35, 200, 178);
+  border-color: #46b8da;
+}
+
