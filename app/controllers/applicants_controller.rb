@@ -32,6 +32,14 @@ class ApplicantsController < ApplicationController
     end
   end
 
+  # 添加收藏
+  def add_collection
+  end
+
+  # 取消收藏
+  def cancle_collection
+  end
+
   # 我的投递箱
   def my_deliver
     @datas, @current_page, @total_page = current_applicant.deliver_data(params[:current_page])
