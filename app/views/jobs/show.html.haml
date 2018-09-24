@@ -21,8 +21,12 @@
         .job-page-btn-area
           %a.btn.btn-collection
             %span.glyphicon.glyphicon-star-empty 收藏
-          %a#deliver-resume.btn.btn-deliver-resume
-            投个简历
+          -if applicant_is_login? && has_deliver?(@job.id)
+            %a#deliver-resume.btn.btn-deliver-resume.disabled
+              已投递
+          -else
+            %a#deliver-resume.btn.btn-deliver-resume
+              投个简历
 .job-page-bottom
   .col-md-8.col-md-offset-2
     .row
@@ -60,7 +64,7 @@
                 https://www.baidu.com
 
 / 简历选择模态框
-=render 'resume_select_modal'
+=render partial: 'resume_select_modal', locals: {job: @job}
 
 
 :javascript

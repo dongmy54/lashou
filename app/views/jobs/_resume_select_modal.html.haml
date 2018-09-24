@@ -7,7 +7,7 @@
         %h4.modal-title.select-resume-title 选择简历
       .modal-body
         =form_tag deliver_resume_path, id: "resume-select-form" do
-          =hidden_field_tag :job_id, @job.id
+          =hidden_field_tag :job_id, job.id
           %select#resume_id.form-control{name: 'resume_id'}
       .modal-footer
         %button.btn.btn-resume-confirm{"data-dismiss" => "modal", :type => "button"} 确认
