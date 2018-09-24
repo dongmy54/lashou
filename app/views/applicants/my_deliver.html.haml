@@ -15,11 +15,11 @@
           已投递简历状态
         =render partial: 'deliver_item', collection: @datas
         .pagination-area
-          -if 3 > 1
+          -if @total_page > 1
             #pagination
           -else 
             .not-find-content
-              没有找到对应职位, 换个词试试
+              还没有投递，赶快去投一个吧！
       
       
 :javascript
