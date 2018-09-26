@@ -1,0 +1,43 @@
+/*---------------------- 我的收藏 start ---------------------*/
+.collection-head {
+  background: #fafafa;
+  height: 50px;
+  border-bottom: 1px solid #ebebeb;
+  position: relative;
+  padding: 10px 0 10px 20px;
+  font-size: 26px;
+  color: #555;
+  font-weight: 300;
+  margin: 0 0 20px;
+}
+
+.collection-item {
+  font-size: 14px;  
+  font-weight: 300;
+}
+
+.collection-job-name a{
+  font-size: 16px;
+  color:#337ab7;
+  text-decoration: none;
+}
+
+.collection-salary {
+  color: #fd5f39;
+  font-weight: 350;
+  margin-left: 5px;
+}
+
+.collection-job-info {
+  margin-top: 8px;
+}
+
+.collection-job-company {
+  margin-top: 10px;
+}
+
+.collection-job-company a{
+  color:#337ab7;
+  text-decoration: none;
+  cursor:pointer;
+}

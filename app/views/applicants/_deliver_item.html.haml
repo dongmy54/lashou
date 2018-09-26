@@ -5,7 +5,7 @@
       %span.deliver-company-name
         =deliver_item.company_name
     .deliver-job
-      %a{href: '#'}
+      %a{href: job_path(deliver_item.id)}
         =deliver_item.job_name
       .deliver-job-salary
         ="#{deliver_item.start_salary}K-#{deliver_item.end_salary}K"

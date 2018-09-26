@@ -67,7 +67,7 @@ class Applicant < ApplicationRecord
     offset_number = (current_page - 1) * 4 # 每页 4
 
     sql = "select c.logo, c.name company_name, j.name job_name, j.start_salary, j.end_salary,
-                       r.title resume_title, dr.state, dr.comment, dr.created_at
+                  j.id, r.title resume_title, dr.state, dr.comment, dr.created_at
                 from deliver_records dr
                 inner join jobs j on j.id = dr.job_id
                 inner join companies c on c.id = j.company_id
@@ -78,13 +78,31 @@ class Applicant < ApplicationRecord
     # 为了照顾 logo_url 方法用 company
     datas       = Company.find_by_sql [sql, self.id, offset_number]
     total_count = deliver_count
-    total_page  = (total_count / 4) + (total_count % 4 == 0 ? 0 : 1)
+    total_page  = count_total_page(total_count)
 
     [datas, current_page, total_page]
   end
 
+  # 投递计数
   def deliver_count
     self.send_delivers.count
+  end
+
+  # 收藏数据
+  def collection_data(current_page)
+    current_page  = current_page.to_i < 1 ? 1 : current_page.to_i
+    offset_number = (current_page - 1) * 4 # 每页 4
+
+    datas       = self.collection_jobs.includes(:company).offset(offset_number).limit(4)
+    total_count = self.collection_jobs.count
+    total_page  = count_total_page(total_count)
+
+    [datas, current_page, total_page]
+  end
+
+  # 计算总页数
+  def count_total_page(total_count)
+    (total_count / 4) + (total_count % 4 == 0 ? 0 : 1)
   end
 
 end

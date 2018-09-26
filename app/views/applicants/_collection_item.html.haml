@@ -1,0 +1,21 @@
+.collection-item{id: "item-#{collection_item.id}"}
+  .panel.panel-default
+    .panel-body
+      .col-md-12
+        .collection-job-name
+          %a{href: job_path(collection_item.id)}
+            =collection_item.name
+          %span.collection-salary
+            ="(#{collection_item.start_salary}k-#{collection_item.end_salary}k)"
+          %span.pull-right
+            ="发布时间: #{collection_item.created_at.strftime("%F")}"
+        .collection-job-info
+          ="#{collection_item.company.city} / #{collection_item.worker_experience} / #{collection_item.education}"
+        .collection-job-company
+          ="#{collection_item.company.name}招聘"
+          %a.pull-right{onclick: "mv_collection(#{collection_item.id})"}
+            移除收藏
+
+
+
+

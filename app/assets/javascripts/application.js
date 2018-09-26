@@ -15,3 +15,12 @@
 //= require turbolinks
 //= require bootstrap
 
+ // 添加 ajax 描述
+function add_ajax_desc(class_name, desc_content) {
+  content  = '<div class="alert alert-dismissible alert-' + class_name + '"'+ '>';
+  content += '<button aria-label="Close" class="close" data-dismiss="alert">×</button>';
+  content += desc_content;
+  content += '</div>';
+  
+  $("#flash-location").html(content);
+}

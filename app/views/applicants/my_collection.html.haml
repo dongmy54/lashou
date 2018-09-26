@@ -1,0 +1,51 @@
+=stylesheet_link_tag 'collection'
+=javascript_include_tag 'pagination.js'
+
+.container
+  .row.profile
+    .col-md-3
+      =render partial: 'common/profile_sidebar', locals: {applicant: current_applicant, status: 'c'}
+    .col-md-9
+      .profile-content
+        .text-center
+          .row
+            .col-lg-12.col-md-12.col-sm-12
+              .service-heading-block
+                %h2.text-center.text-primary.title 我的收藏
+        .collection-head
+          已收藏职位
+        =render partial: 'collection_item', collection: @datas
+        .pagination-area
+          -if @total_page > 1
+            #pagination
+          -elsif @total_page == 0 
+            .not-find-content
+              还没有投递，赶快去投一个吧!
+
+
+:javascript
+  // 替换 分页内容脚步导航
+  $('#pagination').html(generate_pagination(#{@current_page},#{@total_page}));
+
+  // 移除收藏  
+  function mv_collection(job_id) {
+    id   = "#item-" + job_id;
+    data = {"job_id": job_id};
+    console.log(id);
+
+    $.ajax({
+      url:  '/cancel_collection',
+      type: 'POST',
+      dataType: "json",
+      data: data,
+      success: function(data) {
+        if (data['success']) {
+          // 删除相应条目
+          $(id).remove();
+        } else { 
+          add_ajax_desc('warning', data['err_desc']);
+        }
+      }
+    })
+  }
+

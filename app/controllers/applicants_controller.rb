@@ -91,12 +91,21 @@ class ApplicantsController < ApplicationController
       end
     end
 
-    render json: result
+    respond_to do |format|
+      format.html {redirect_to my_collection_path}
+      format.json {render json: result}
+    end
+    
   end
 
   # 我的投递箱
   def my_deliver
     @datas, @current_page, @total_page = current_applicant.deliver_data(params[:current_page])
+  end
+
+  # 我的收藏
+  def my_collection
+    @datas, @current_page, @total_page = current_applicant.collection_data(params[:current_page])
   end
 
   private

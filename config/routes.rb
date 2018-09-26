@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   post 'login',     to: 'applicant_sessions#create'
   delete 'exit',    to: 'applicant_sessions#destroy'
 
-  get 'my_deliver', to: 'applicants#my_deliver'
+  get 'my_deliver',    to: 'applicants#my_deliver'
+  get 'my_collection', to: 'applicants#my_collection'
 
   resources :jobs, only: [:show]
 
