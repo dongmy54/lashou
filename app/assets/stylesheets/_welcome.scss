@@ -7,13 +7,14 @@
 
 .type-pic-area {
   height: 300px;
-  background: #c3ecee;
+  background: #fff;
+  margin: 0 -15px;
 }
 
 .job-area {
-  height: 1000px;
+  overflow: auto;
   background: #a1e8e4;
-  margin: 26px auto 0;
+  margin: 0 -15px;
 }
 
 /*-----------------搜索框 开始-------------------*/
