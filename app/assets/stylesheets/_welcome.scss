@@ -15,8 +15,21 @@
   overflow: auto;
   background: #a1e8e4;
   margin: 0 -15px;
+  padding: 20px 0;
 }
 
+.last-job-title {
+  border-radius: 25px;
+  font-weight: 30;
+  font-size: 16px;
+  margin-left: 15px;
+  padding: 10px 0;
+  width: 100px;
+  /* border-bottom: 2px solid #333; */
+  background: #fff;
+  color: rgb(35, 200, 178);
+  text-align: center;
+}
 /*-----------------搜索框 开始-------------------*/
 .job-search {
   margin-top: 30px;
@@ -43,6 +56,10 @@
   padding: 20px 18px 0;
   border: 1px solid #EAEEED;
   background-color: #fff;
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(33,33,33,.2);
+  }
 }
 
 .job-thumb-top {
