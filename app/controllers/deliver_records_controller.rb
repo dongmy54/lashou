@@ -6,13 +6,13 @@ class DeliverRecordsController < ApplicationController
     result = {}
     # 登录
     unless applicant_is_login?
-      result[:url] = login_path
+      result[:url] = login_path(type: 'not_login')    # 添加参数 为了跳转后 加提示
       render json: result and return # 提前返回
     end
 
     # 简历
     unless current_applicant.resumes.present?
-      result[:url] = new_applicant_resume_path(current_applicant)
+      result[:url] = new_applicant_resume_path(current_applicant, type: 'resume_not_exist')
       render json: result and return
     end
 

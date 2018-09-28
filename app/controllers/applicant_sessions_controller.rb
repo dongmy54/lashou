@@ -3,6 +3,9 @@ class ApplicantSessionsController < ApplicationController
 
   # 登录页面
   def new
+    if params[:type] == 'not_login'
+      flash[:warning] = '亲,还是登录后再投递吧！'
+    end
   end
 
   # 登录

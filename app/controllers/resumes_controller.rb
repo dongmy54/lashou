@@ -16,6 +16,9 @@ class ResumesController < ApplicationController
   end
 
   def new
+    if params[:type] == 'resume_not_exist'
+      flash[:warning] = '还没简历,没关系，现在写一份'
+    end
     @applicant = Applicant.find(params[:applicant_id])
     @resume    = Resume.new
   end

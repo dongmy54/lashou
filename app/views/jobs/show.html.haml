@@ -80,8 +80,9 @@
     var url = "#{valid_before_deliver_path}";
 
     $.ajax({
-      type: "GET",
-      url:  url,
+      type:     "GET",
+      url:      url,
+      dataType: "JSON",
       success: function(data) {
         resume_arr = data['resumes'];
         url        = data["url"];
