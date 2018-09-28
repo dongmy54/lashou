@@ -1,6 +1,17 @@
 .search-area
   =render 'common/job_search'
 .type-pic-area
+  .row
+    .col-md-10.col-md-offset-1
+      .col-md-4
+        %ul.inudesty-list{style: 'list-style:none; overflow: hidden;'}
+          -Industry::Type[0..10].each do |type|
+            %li
+              %a{href: search_job_path(search: type)} 
+                =type
+      .col-md-8
+        =render 'carousel'
+
 .job-area
   .col-md-10.col-md-offset-1
     .last-job-title 最新职位

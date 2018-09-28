@@ -1,0 +1,17 @@
+#myCarousel.carousel.slide{"data-ride" => "carousel"}
+  %ol.carousel-indicators
+    %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+  .carousel-inner{:role => "listbox"}
+    .item.active
+      %img{:alt => "Chania", :src => "https://i.loli.net/2018/09/27/5bace101db79a.jpg"}/
+      .carousel-caption
+    .item
+      %img{:alt => "Chania", :src => "https://i.loli.net/2018/09/27/5bace1041cf19.png"}/
+      .carousel-caption
+  %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel", :role => "button"}
+    %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+    %span.sr-only Previous
+  %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel", :role => "button"}
+    %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+    %span.sr-only Next

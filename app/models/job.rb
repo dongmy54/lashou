@@ -51,20 +51,23 @@ class Job < ApplicationRecord
     current_page = current_page_cal(current_page)
     offset_num   = (current_page - 1) * 10 # 每页 10
 
-    # 城市
-    if is_city?(search_name) && company_ids(search_name).present?
+    # 行业
+    if is_industry?(search_name)
+      industry = Industry.find_by_name(search_name)
+      count    = industry.jobs.count
+
+      jobs     = industry.jobs.includes(company: :industry).offset(offset_num).limit(10) if count > 0
+    elsif is_city?(search_name) && company_ids(search_name).present? # 城市
       c_ids = company_ids(search_name)
       count = Job.where(company_id: c_ids).count
 
       jobs  = Job.includes(company: :industry).where(company_id: c_ids).offset(offset_num).limit(10) if count > 0
-      jobs ||=  Job.none  # 空关系
     else
       count = Job.where('name like ?', "%#{search_name}%").count
-
       jobs  = Job.includes(company: :industry).where('name like ?', "%#{search_name}%").limit(10) if count > 0
-      jobs ||=  Job.none  # 空关系
     end
-    
+
+    jobs ||=  Job.none  # 空关系
     total_page = (count / 10) + (count % 10 == 0 ? 0 : 1)
     [jobs, current_page, total_page]
   end
@@ -74,8 +77,14 @@ class Job < ApplicationRecord
     current_page = current_page.to_i <= 1 ? 1 : current_page.to_i
   end
 
+  # 城市？
   def self.is_city?(city)
     SeedCity.include?(city)
+  end
+
+  # 行业？
+  def self.is_industry?(industry)
+    Industry::Type.include?(industry)
   end
 
   # 城市-公司id数组

@@ -4,3 +4,13 @@
       =text_field_tag :search, params[:search], placeholder: '搜索职位或公司地点', class: 'form-control'
       .input-group-btn
         =submit_tag '搜索', class: 'btn job-search-btn'
+    .hot-search
+      .hot-search-title
+        热门搜索:
+      .hot-search-content
+        %span 
+          %a{href: search_job_path(search: '美容')} 美容
+        %span
+          %a{href: search_job_path(search: '文化、体育和娱乐业')} 文化、体育和娱乐业
+        %span 
+          %a{href: search_job_path(search: '成都')} 成都
