@@ -1,4 +1,6 @@
 class ResumesController < ApplicationController
+  before_action :require_login
+  before_action :only_can_show_self
 
   def index
     # 提前加载 简历
@@ -23,6 +25,14 @@ class ResumesController < ApplicationController
     @resume    = Resume.new
   end
 
+  def edit
+    @applicant = Applicant.find(params[:applicant_id])
+    @resume    = @applicant.resumes.find_by_id(params[:id]) 
+    
+    # 简历不属于 该求职者
+    redirect_to root_path unless @resume
+  end
+
   def create
     @applicant           = Applicant.find(params[:applicant_id])
     @resume              = Resume.new(resume_params)
@@ -34,6 +44,22 @@ class ResumesController < ApplicationController
     else
       flash[:warning] = @resume.errors.messages
       render :new
+    end
+  end
+
+  def update
+    @applicant = Applicant.find(params[:applicant_id])
+    @resume    = @applicant.resumes.find_by_id(params[:id]) 
+    
+    # 简历不属于 该求职者
+    redirect_to root_path and return unless @resume
+
+    if @resume.update(resume_params)
+      flash[:notice] = '简历已更新成功'
+      redirect_to applicant_resumes_path(@applicant)
+    else
+      flash[:warning] = @resume.errors.messages
+      render :edit
     end
   end
 
@@ -53,5 +79,9 @@ class ResumesController < ApplicationController
         disposition: "inline"
     end
 
+    def only_can_show_self
+      @applicant = Applicant.find(params[:applicant_id])
+      redirect_to root_path unless @applicant == current_applicant
+    end
 
 end

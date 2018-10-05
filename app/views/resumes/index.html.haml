@@ -1,3 +1,16 @@
+%style
+  :plain
+    .new-resume-b {
+      margin-top: 60px;
+      font-size: 80px;
+    }
+
+    .new-resume-b > a {
+      color: #5bc0de;
+      font-weight: 300;
+    }
+    
+
 .container
   .row.profile
     .col-md-3
@@ -21,7 +34,12 @@
               -@applicant.resumes.each_with_index do |resume, index|
                 -color_class,glyphicon_class = thumb_item_color_glyphicon_class(index)
                 =render partial: 'thumb_item', locals: {applicant: @applicant,resume: resume, color_class: color_class,glyphicon_class: glyphicon_class}
-
+              -if @applicant.resumes.count < 3
+                .col-lg-4.col-md-6.col-sm-6
+                  .text-center.feature-block{style: 'height: 250px;'}
+                    .new-resume-b
+                      %a{href: new_applicant_resume_path(@applicant)}
+                        %span.glyphicon.glyphicon-plus
 %br
 %br
 %br

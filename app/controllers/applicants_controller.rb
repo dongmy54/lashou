@@ -119,8 +119,4 @@ class ApplicantsController < ApplicationController
       session[:applicant_id] = @applicant.id
     end
 
-    def require_login
-      redirect_to root_path unless current_applicant
-    end
-
 end
