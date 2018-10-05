@@ -29,7 +29,7 @@ class Resume < ApplicationRecord
   validates_presence_of :brief_intro, in: 1..32
 
   validates_length_of   :apply_reason, :career_experience, :life_creed, 
-                        :project_experience, :special_skill, :title, in: 1..400
+                        :project_experience, :special_skill, :title, in: 1..800
 
 
 end
