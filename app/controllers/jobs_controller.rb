@@ -11,6 +11,9 @@ class JobsController < ApplicationController
       flash[:warning] = '职位不存在'
       redirect_to root_path
     end
+
+    # 客户端缓存
+    fresh_when last_modified: @job.updated_at.utc, etag: @job
   end
 
 end
