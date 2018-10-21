@@ -1,16 +1,17 @@
 =stylesheet_link_tag    'job_search', media: "all", 'data-turbolinks-track': 'reload'
 =javascript_include_tag 'pagination.js', 'data-turbolinks-track': 'reload'
 
-.search-area
-  =render 'common/job_search'
-.search-job-area
-  =render partial: 'job_item', collection: @jobs
-  .pagination-area
-    -if @total_page > 1
-      #pagination
-    -elsif @total_page == 0 
-      .not-find-content
-        没有找到对应职位, 换个词试试
+-cache @jobs do
+  .search-area
+    =render 'common/job_search'
+  .search-job-area
+    =render partial: 'job_item', collection: @jobs
+    .pagination-area
+      -if @total_page > 1
+        #pagination
+      -elsif @total_page == 0 
+        .not-find-content
+          没有找到对应职位, 换个词试试
 
 
 :javascript
